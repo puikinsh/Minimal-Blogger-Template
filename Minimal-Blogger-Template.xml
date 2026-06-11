@@ -19,8 +19,9 @@
 
 	<!-- Blogger main head data and meta -->
     <b:include data='blog' name='all-head-content'/>
-
-    <link crossorigin='anonymous' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb' rel='stylesheet'/>
+    <link crossorigin='anonymous' href='https://cdn.jsdelivr.net' rel='preconnect'/>
+    <link href='https://fonts.googleapis.com' rel='preconnect'/>
+    <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 
   <b:skin><![CDATA[
 /* Variable definitions
@@ -32,6 +33,34 @@
 </Group>
 -----------------------
 */
+
+/* Bootstrap replacement - only the pieces this template actually uses
+----------------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
+.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:15px;padding-left:15px}
+.col-md-12{flex:0 0 auto;width:100%}
+@media (min-width:768px){.col-md-6{flex:0 0 auto;width:50%}}
+@media (min-width:576px){.col-sm-3{flex:0 0 auto;width:25%}}
+.list-inline,.list-unstyled{padding-left:0;list-style:none}
+.list-inline li{display:inline-block;list-style:none}
+.input-group{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;width:100%}
+.input-group>.form-control{position:relative;flex:1 1 auto;width:1%;min-width:0}
+.form-control{display:block;width:100%;padding:6px 12px;font-size:14px;line-height:1.5;color:#2e2e2e;background-color:#fff;border:1px solid #ced4da;border-radius:4px}
+.btn{display:inline-block;padding:6px 12px;font-size:14px;line-height:1.5;text-align:center;vertical-align:middle;cursor:pointer;-webkit-user-select:none;user-select:none;border:1px solid transparent;border-radius:4px;background-color:transparent;color:inherit}
+.btn-primary{color:#fff;background-color:$maincolor;border-color:$maincolor}
+@keyframes minoFadeIn{from{opacity:0}to{opacity:1}}
+.skip-link{position:absolute;left:-9999px;top:0;background:$maincolor;color:#fff!important;padding:10px 16px;z-index:100000}
+.skip-link:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (min-width:769px){.mino_featured_widget.mino-initiate{min-height:500px}}
+.mino-slider{position:relative;overflow:hidden}
+.mino-slider .swiper-button-next,.mino-slider .swiper-button-prev{color:#fff;background:$maincolor;width:25px;height:25px;opacity:0;transition:.2s all ease-in-out}
+.mino-slider .swiper-button-next:after,.mino-slider .swiper-button-prev:after{font-size:12px}
+.mino-slider:hover .swiper-button-next,.mino-slider:hover .swiper-button-prev{opacity:1}
+.mino-slider .swiper-button-disabled{display:none}
+
 
 /* Global */
 *::selection {background: $maincolor;color: #ffffff;}
@@ -81,7 +110,7 @@ body{color:#2e2e2e;font-family:'Montserrat', sans-serif;font-size:14px;font-weig
 .body-row{width:1170px}
 #content-wrapper{margin:0 auto;padding:20px 0 40px;overflow:hidden}
 #main-wrapper{float:left;width:68%;max-width:800px}
-#sidebar-wrapper{float:right;width:30%;max-width:340px}
+#sidebar-wrapper{float:right;width:30%;max-width:340px;position:sticky;top:20px}
 article{padding:0;overflow:hidden}
 
 /* Top Bar*/
@@ -1066,8 +1095,8 @@ body#layout #content-wrapper{margin:0px;width:100%;}
 //<![CDATA[
 //CSS Ready
 function loadCSS(e,t,n){"use strict";var i=window.document.createElement("link");var o=t||window.document.getElementsByTagName("script")[0];i.rel="stylesheet";i.href=e;i.media="only x";o.parentNode.insertBefore(i,o);setTimeout(function(){i.media=n||"all"})}
-loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");loadCSS("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-loadCSS("//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap");loadCSS("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
+loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
 //]]>
 </script>
 </head>
@@ -2975,10 +3004,6 @@ $('.mino-navigation').after(codei);
           <a class='profile-name-link g-profile' expr:href='data:userUrl' expr:style='&quot;background-image: url(&quot; + data:profileLogo + &quot;);&quot;' rel='author'>
             <data:displayname/>
           </a>
-          <b:if cond='data:hasgoogleprofile'>
-            <br/>
-            <div class='g-follow' data-annotation='bubble' data-height='20' expr:data-href='data:userUrl'/>
-          </b:if>
         </dt>
 
         <b:if cond='data:showlocation'>
