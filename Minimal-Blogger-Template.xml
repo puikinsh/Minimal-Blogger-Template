@@ -15,11 +15,7 @@
 
 	<!--META-->
 	<meta charset='utf-8'/>
-	<meta content='width' name='MobileOptimized'/>
-	<meta content='true' name='HandheldFriendly'/>
-	<meta content='yes' name='apple-mobile-web-app-capable'/>
-	<meta content='index,nofollow' name='robots'/>
-	 <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+	 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 
 	<!-- Blogger main head data and meta -->
     <b:include data='blog' name='all-head-content'/>
@@ -640,21 +636,6 @@ select#BlogArchive1_ArchiveMenu{width:100%;padding:10px;}
 .contact-form-button-submit:hover{background-color:#303030;background-image:none;border:0}
 
 /* Follow By Email */
-.sidebar .FollowByEmail > h3.title,.sidebar .FollowByEmail .title-wrap{margin-bottom:0}
-#FollowByEmail1{clear:both}
-.FollowByEmail td{width:100%;float:left;box-sizing:border-box}
-.FollowByEmail .follow-by-email-inner .follow-by-email-submit{margin-left:0;width:100%;border-radius:0;height:30px;font-size:11px;color:#fff;background-color:$maincolor;font-family:'Montserrat', sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:1px}
-.FollowByEmail .follow-by-email-inner .follow-by-email-submit:hover{background-color:#000}
-.FollowByEmail .follow-by-email-inner .follow-by-email-address{padding-left:10px;height:30px;border:1px solid #FFF;margin-bottom:5px;box-sizing:border-box;font-size:11px;font-family:'Montserrat', sans-serif;}
-.FollowByEmail .follow-by-email-inner .follow-by-email-address:focus{border:1px solid #FFF}
-.FollowByEmail .widget-content{box-sizing:border-box;padding:10px}
-.mino-fcols-inner .FollowByEmail .widget-content{margin-top:10px}
-.widget.FollowByEmail .widget-content:before{content: "\f1d9";font-family: FontAwesome;width: 100%;display: inline-block;text-align: center;font-size:30px;padding: 5px 0px;color:#757575;}
-.FollowByEmail .widget-content .follow-by-email-inner:before {content: "Get the latest news in your inbox!";font-size: 14px;color: #757575;line-height: 1.4em;margin-bottom: 5px;display: block;padding: 0 2px;text-align: center;padding-bottom: 5px}
-.FollowByEmail .follow-by-email-inner .follow-by-email-address{border: 1px solid $(lightcolor) ;font-size:13px;box-sizing:border-box;margin-top:10px;}
-.FollowByEmail .follow-by-email-inner .follow-by-email-submit{background: $(lightcolor) ;color: #000;font-size:12px;font-weight: 400;margin-top:5px;}
-.FollowByEmail .follow-by-email-inner .follow-by-email-submit:hover{background: $maincolor;color: #fff;}
-.FollowByEmail .follow-by-email-inner .follow-by-email-address:focus{border: 1px solid $(lightcolor) ;}
 
 /* Recent Post Widget */
 .mino-recent .mino-recent-item{overflow:hidden;border-bottom:1px solid $(lightcolor);padding:10px 0}
@@ -786,7 +767,7 @@ transform:  scale(1.05,1.05);
   transition:.5s all ease-in-out;
 }
 article .mino-article-image{overflow: hidden;position: relative;}
-.post-image.empty-post-image{background: #f7f7f7;background: url(http://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/s1600-r/nth.png)}
+.post-image.empty-post-image{background: #f7f7f7;background: url(https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/s1600-r/nth.png)}
 .posttitle{margin: 20px;}
 .only-post{display: none}
 
@@ -1123,7 +1104,7 @@ loadCSS("//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 <b:section class='post-author-widget' id='Postwidegt1' maxwidgets='1' name='Author Description' preferred='no' showaddelement='no'>
   <b:widget id='HTML999' locked='true' title='Author Description' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'>Hey there, We are Blossom Themes! We are trying to provide you the new way to look and use the blogger templates. Our designers are working hard and pushing the boundaries of possibilities to widen the horizon of the regular templates and provide high quality blogger templates to all hardworking bloggers!</b:widget-setting>
+      <b:widget-setting name='content'>Hey there! We are Colorlib, crafting beautiful free website templates and themes since 2013. Our designers push the boundaries to deliver high quality templates for bloggers, businesses, and creatives worldwide!</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -1377,7 +1358,7 @@ loadCSS("//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 <b:section class='ad-home-widget' id='mino-advert-1' maxwidgets='1' name='Home Advertisement [Full Width]' preferred='no' showaddelement='no'>
   <b:widget id='HTML994' locked='false' title='Full width home advertisement' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="http://www.blossomtheme.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -1446,7 +1427,7 @@ loadCSS("//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 <b:section class='ad-top-widget' id='mino-advert-2' maxwidgets='1' name='Post Page Advertisement [Top]' preferred='no' showaddelement='no'>
   <b:widget id='HTML991' locked='true' title='Post Page Advertisement [Top]' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="http://www.blossomtheme.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -2186,7 +2167,7 @@ $('.mino-navigation').after($('#hpick').html());
     <div class='author-content'>
       <div class='top-author'>
         <h5>
-          <a expr:href='data:post.authorUrl' rel='author' title='Posts by Diago'><data:post.author/>
+          <a expr:href='data:post.authorUrl' rel='author' expr:title='&quot;Posts by &quot; + data:post.author'><data:post.author/>
           </a>
         </h5>
       </div>
@@ -2626,7 +2607,7 @@ $('.mino-navigation').after(codei);
 <b:section class='ad-bottom-widget' id='mino-advert-3' maxwidgets='1' name='Bottom Ad [Post Page]' preferred='no' showaddelement='no'>
   <b:widget id='HTML988' locked='true' title='Bottom Ad [Post Page]' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="http://www.blossomtheme.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -2678,39 +2659,7 @@ $('.mino-navigation').after(codei);
 </b:includable>
       </b:widget>
       <b:widget id='Navbar1' locked='false' title='Navbar' type='Navbar' version='1'>
-        <b:includable id='main'>&lt;script type=&quot;text/javascript&quot;&gt;
-    function setAttributeOnload(object, attribute, val) {
-      if(window.addEventListener) {
-        window.addEventListener(&#39;load&#39;,
-          function(){ object[attribute] = val; }, false);
-      } else {
-        window.attachEvent(&#39;onload&#39;, function(){ object[attribute] = val; });
-      }
-    }
-  &lt;/script&gt;
-&lt;div id=&quot;navbar-iframe-container&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;https://apis.google.com/js/plusone.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-      gapi.load(&quot;gapi.iframes:gapi.iframes.style.bubble&quot;, function() {
-        if (gapi.iframes &amp;&amp; gapi.iframes.getContext) {
-          gapi.iframes.getContext().openChild({
-              url: &#39;https://www.blogger.com/navbar.g?targetBlogID\x3d1317094799489496216\x26blogName\x3dMinimal\x26publishMode\x3dPUBLISH_MODE_BLOGSPOT\x26navbarType\x3dLIGHT\x26layoutType\x3dLAYOUTS\x26searchRoot\x3dhttps://minimal-blossom.blogspot.com/search\x26blogLocale\x3den\x26v\x3d2\x26homepageUrl\x3dhttps://minimal-blossom.blogspot.com/\x26vt\x3d-2787912912977497473&#39;,
-              where: document.getElementById(&quot;navbar-iframe-container&quot;),
-              id: &quot;navbar-iframe&quot;
-          });
-        }
-      });
-    &lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt;
-(function() {
-var script = document.createElement(&#39;script&#39;);
-script.type = &#39;text/javascript&#39;;
-script.src = &#39;//pagead2.googlesyndication.com/pagead/js/google_top_exp.js&#39;;
-var head = document.getElementsByTagName(&#39;head&#39;)[0];
-if (head) {
-head.appendChild(script);
-}})();
-&lt;/script&gt;
-</b:includable>
+        <b:includable id='main'/>
       </b:widget>
     </b:section>
 <div style='clear: both;'/>
@@ -3045,32 +2994,6 @@ head.appendChild(script);
     </div>
   </b:includable>
    </b:widget>
-   <b:widget id='FollowByEmail1' locked='false' title='Newsletter' type='FollowByEmail' version='1'>
-     <b:includable id='main'>
-  <b:if cond='data:title != &quot;&quot;'><h2 class='title'><data:title/></h2></b:if>
-  <div class='widget-content'>
-    <div class='follow-by-email-inner'>
-      <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
-        <table width='100%'>
-          <tr>
-            <td>
-              <input class='follow-by-email-address' name='email' placeholder='Email address...' type='text'/>
-            </td>
-            <td width='64px'>
-              <input class='follow-by-email-submit' type='submit' value='Submit'/>
-            </td>
-          </tr>
-        </table>
-        <input expr:value='data:feedPath' name='uri' type='hidden'/>
-        <input name='loc' type='hidden' value='en_US'/>
-      </form>
-    </div>
-  </div>
-  <span class='item-control blog-admin'>
-  <!--b:include name='quickedit'/-->
-  </span>
-</b:includable>
-   </b:widget>
    <b:widget id='Label3' locked='false' title='Labels' type='Label' version='1'>
      <b:widget-settings>
        <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
@@ -3209,7 +3132,7 @@ var $ = jQuery;
 </script>
 <script async='async' type='text/javascript'>
 //<![CDATA[
-var no_image = "http://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/s1600-r/nth.png";
+var no_image = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/s1600-r/nth.png";
 var month_format = [, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 var more_text = "View More";
 var comments_text = "<span>Post </span>Comment";
@@ -3269,7 +3192,7 @@ $(document)
         if(thp.indexOf('[mega menu]') != -1){
 
           $(this).addClass('mega-link');
-          $(this).attr('href','http://mino-blossom.blogspot.com/search/label/' + $(this).text() + '?&max-results=' + perPage);
+          $(this).attr('href','/search/label/' + $(this).text() + '?&max-results=' + perPage);
 
         }
 
@@ -3812,11 +3735,11 @@ $('.mino-widetize .HTML .widget-content span.mino-cmnt').each(function() {
                 }
                 var y = e.feed.entry[i].author[0].name.$t;
                 var yk = e.feed.entry[i].author[0].gd$image.src;
-                if (yk.match('http://img1.blogblog.com/img/blank.gif')) {
-                    var k = 'http://img1.blogblog.com/img/anon36.png'
+                if (yk.match('img1.blogblog.com/img/blank.gif')) {
+                    var k = 'https://img1.blogblog.com/img/anon36.png'
                 } else {
-                    if (yk.match('http://img2.blogblog.com/img/b16-rounded.gif')) {
-                        var k = 'http://img1.blogblog.com/img/anon36.png'
+                    if (yk.match('img2.blogblog.com/img/b16-rounded.gif')) {
+                        var k = 'https://img1.blogblog.com/img/anon36.png'
                     } else {
                         var k = yk
                     }
