@@ -3444,7 +3444,7 @@ function initMegaMenus() {
       var perStage = parseInt(data.feed.openSearch$itemsPerPage.$t, 10);
       var stages = Math.ceil(total / perStage);
       var html = '<ul data-itemnums="' + perStage + '" data-label="' + label + '" data-start="' + start + '" data-stages="' + stages + '" data-cstage="1" data-tpst="' + total + '">' +
-        '<div class="mega-nav"><a aria-label="Previous posts" class="mega-prev disable" href="javascript:;" role="button"><i aria-hidden="true" class="fa-solid fa-arrow-left"></i></a><a aria-label="Next posts" class="mega-next" href="javascript:;" role="button"><i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a></div>' +
+        '<div class="mega-nav"><a aria-label="Previous posts" class="mega-prev disable" href="javascript:;" role="button"><i aria-hidden="true" class="fa fa-arrow-left"></i></a><a aria-label="Next posts" class="mega-next" href="javascript:;" role="button"><i aria-hidden="true" class="fa fa-arrow-right"></i></a></div>' +
         '<div class="mino-mega-loading" style="display:none"><div class="mino-loading-inner"><div class="mino-thecube"><div class="mino-cube mino-c1"></div><div class="mino-cube mino-c2"></div><div class="mino-cube mino-c4"></div><div class="mino-cube mino-c3"></div></div></div></div>' +
         '<div class="mega-inner row">' + data.feed.entry.map(minoMegaItemHtml).join("") + "</div></ul>";
       link.insertAdjacentHTML("afterend", html);
@@ -3779,10 +3779,10 @@ article {
 <script type='text/javascript'>
   /*<![CDATA[*/
     var numPages=5;
-    var firstText ='<i class="fa-solid fa-arrow-left" aria-hidden="true"></i> First';
-    var lastText ='Last <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
-    var prevText ='<i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span class="sr-only">Previous page</span>';
-    var nextText ='<i class="fa-solid fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Next page</span>';
+    var firstText ='<i class="fa fa-arrow-left" aria-hidden="true"></i> First';
+    var lastText ='Last <i class="fa fa-arrow-right" aria-hidden="true"></i>';
+    var prevText ='<i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-only">Previous page</span>';
+    var nextText ='<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Next page</span>';
     var urlactivepage=location.href;
     var home_page="/";
   /*]]>*/
@@ -3834,7 +3834,7 @@ function minoNoPostsPanel(label) {
 }
 
 function minoShareIconsHtml(url) {
-  return '<div class="mino-post-share"><div class="mino-cell"><ul class="social-icons list-unstyled list-inline"><li class="social-item facebook"> <a href="https://www.facebook.com/sharer.php?u=' + url + '" title="facebook" class="post_share_facebook facebook" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600\');return false;"> <i class="fa-brands fa-facebook"></i> </a></li><li class="social-item twitter"> <a href="https://twitter.com/share?url=' + url + '" title="twitter" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600\');return false;" class="product_share_twitter twitter"> <i class="fa-brands fa-x-twitter"></i> </a></li><li class="social-item pinterest"> <a href="https://pinterest.com/pin/create/button/?url=' + url + '" class="pinterest" title="pinterest" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"> <i class="fa-brands fa-pinterest"></i> </a></li></ul></div></div>';
+  return '<div class="mino-post-share"><div class="mino-cell"><ul class="social-icons list-unstyled list-inline"><li class="social-item facebook"> <a href="https://www.facebook.com/sharer.php?u=' + url + '" title="facebook" class="post_share_facebook facebook" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600\');return false;"> <i class="fa fa-facebook"></i> </a></li><li class="social-item twitter"> <a href="https://twitter.com/share?url=' + url + '" title="twitter" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600\');return false;" class="product_share_twitter twitter"> <i class="fa fa-twitter"></i> </a></li><li class="social-item pinterest"> <a href="https://pinterest.com/pin/create/button/?url=' + url + '" class="pinterest" title="pinterest" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"> <i class="fa fa-pinterest"></i> </a></li></ul></div></div>';
 }
 
 function minoRenderListWidget(widget, data) {
@@ -3848,9 +3848,9 @@ function minoRenderListWidget(widget, data) {
       var published = entry.published.$t;
       var date = minoFormatLongDate(published);
       var image = minoEntryImage(entry, index === 0 ? "s800" : "s400");
-      var metaTime = '<span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span>";
+      var metaTime = '<span class="posted-on"><i class="fa fa-clock-o"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span>";
       if (index === 0) {
-        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + title + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
+        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + title + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa fa-user-o"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
       } else {
         html += '<article class="mino-post"><div class="article-image"><div class="post-image"><a aria-label="' + minoAttr(title) + '" href="' + url + '" style="background:black url(' + image + ')" rel="bookmark"></a></div></div><div class="article-content side-item-text"><div class="entry-header"><div class="entry-header-title"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta">' + metaTime + "</div></div></article>";
       }
@@ -3888,7 +3888,7 @@ function minoRenderGalleryWidget(widget, data) {
     var date = minoFormatLongDate(published);
     var media = minoGalleryImage(entry);
     if (index === 0) {
-      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + title + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> <span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
+      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + title + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa fa-user-o"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> <span class="posted-on"><i class="fa fa-clock-o"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
     }
     slidesHtml += '<div class="swiper-slide mino-gallery-post slide item dy-dn"><div class="' + state + " " + media.id + ' img_dyn getinfo" data-vidid="' + media.id + '" data-img="' + media.img + '" style="background:url(' + media.img + ')" data-auth="' + author + '" data-auth-uri="' + authorUrl + '" data-time="' + date + '"></div><div class="mino-slide-title"><h3><a href="' + url + '">' + title + "</a></h3></div></div>";
     if (index === 0) state = "playing";
@@ -3960,7 +3960,7 @@ function initCustomWidgets() {
         if (l.rel === "alternate") {
           var widgetBox = widget.closest(".widget");
           var heading = widgetBox ? widgetBox.querySelector("h2.title") : null;
-          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + l.href + "?&max-results=" + perPage + '" >view all <i class="fa-solid fa-arrow-right"></i></a></div>');
+          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + l.href + "?&max-results=" + perPage + '" >view all <i class="fa fa-arrow-right"></i></a></div>');
         }
       });
       if (type === "list") minoRenderListWidget(widget, data);
