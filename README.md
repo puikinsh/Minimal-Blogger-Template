@@ -1,10 +1,21 @@
-# Minimal — Free Clean & Minimal Personal Blog Blogger Template
+# Minimal — Free Clean & Minimal Blogger Template
 
+[![Version](https://img.shields.io/badge/Version-2.0.0-2942ee.svg)](CHANGELOG.md)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-zero_frameworks-F7DF1E?logo=javascript&logoColor=black)](http://vanilla-js.com/)
 
-Minimal is a free clean & minimal personal blog Blogger/Blogspot template. Created and maintained by [Colorlib](https://colorlib.com).
+Minimal is a free, open-source Blogger/Blogspot template with a sleek, clean design that keeps the focus on your content. Built with 100% vanilla JavaScript and lean custom CSS — no jQuery, no Bootstrap, and zero render-blocking external assets. Created and maintained by [Colorlib](https://colorlib.com).
 
 **[Live Demo](https://minimal-preview.blogspot.com/)** | **[Download](https://github.com/puikinsh/Minimal-Blogger-Template/archive/refs/heads/master.zip)** | **[Changelog](CHANGELOG.md)**
+
+## Features
+
+- **Zero frameworks** — no Bootstrap, no jQuery; modular vanilla JavaScript and lean custom CSS
+- **Swiper 11 gallery slider** loaded on demand only when used
+- **Fast page load** — zero render-blocking external assets, preconnect hints, native lazy loading, right-sized images, LCP-optimized featured grid
+- **SEO-optimized** — single h1 per page, JSON-LD structured data (WebSite, SearchAction, BlogPosting), Open Graph and Twitter card meta
+- **Accessible** — skip link, labeled controls, ARIA tab roles, keyboard-friendly search overlay
+- Featured posts grid, tabbed sidebar (recent/popular/comments), mega menu, AdSense-ready ad slots, sticky sidebar, customizable colors via the Blogger theme editor
 
 ## Quick Start
 
@@ -12,11 +23,10 @@ Minimal is a free clean & minimal personal blog Blogger/Blogspot template. Creat
 2. **Open Blogger** — Go to [blogger.com](https://www.blogger.com) and sign in
 3. **Navigate to Theme** — Click **Theme** in the left sidebar, then **Customize** > **Edit HTML**
 4. **Paste the template** — Select all existing code, delete it, and paste the contents of `Minimal-Blogger-Template.xml`
-5. **Save** — Click the save icon and preview your site
+5. **Save** — If Blogger warns about deleting the FollowByEmail widget, confirm — that service was shut down in 2021
+6. **Mobile setting** — In **Theme**, click the gear under the Mobile preview and choose **Desktop** (the template is fully responsive)
 
 ### Import Demo Content (Optional)
-
-To see the template with sample posts and pages:
 
 1. Go to **Settings** > **Manage blog** > **Import content**
 2. Upload `Minimal Demo Content.xml`
