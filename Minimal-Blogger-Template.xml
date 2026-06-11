@@ -3,7 +3,7 @@
 <!--
 =============================================================
  Minimal - Free Clean & Minimal Blogger Template
- Version: 2.0.0
+ Version: 2.1.0
  Author: Colorlib (https://colorlib.com)
  Demo: https://minimal-preview.blogspot.com
  License: GPL v3 (https://www.gnu.org/licenses/gpl-3.0)
@@ -169,13 +169,16 @@ article{padding:0;overflow:hidden}
 .mino-social .widget ul{padding:0}
 .mino-social .LinkList ul{text-align:center;margin:0 20px 0 0}
 .mino-social #social a{display:block;width:30px;height:30px;line-height:30px;font-size:14px;color:#fff;transition:background .3s linear}
-.mino-social #social a:before{display:inline-block;font:normal normal normal 22px/1 FontAwesome;font-size:inherit;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.mino-social .bloglovin:before{content:"\f004"}
+.mino-social #social a:before{display:inline-block;font-family:"Font Awesome 7 Brands";font-size:inherit;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.mino-social .bloglovin:before{content:"\f004";font-family:"Font Awesome 7 Free";font-weight:900}
 .mino-social .facebook:before{content:"\f09a"}
-.mino-social .twitter:before{content:"\f099"}
-.mino-social .gplus:before{content:"\f0d5"}
-.mino-social .rss:before{content:"\f09e"}
+.mino-social .twitter:before,.mino-social .x-twitter:before{content:"\e61b"}
+.mino-social .rss:before{content:"\f09e";font-family:"Font Awesome 7 Free";font-weight:900}
 .mino-social .youtube:before{content:"\f167"}
+.mino-social .tiktok:before{content:"\e07b"}
+.mino-social .threads:before{content:"\e618"}
+.mino-social .telegram:before{content:"\f2c6"}
+.mino-social .whatsapp:before{content:"\f232"}
 .mino-social .skype:before{content:"\f17e"}
 .mino-social .stumbleupon:before{content:"\f1a4"}
 .mino-social .tumblr:before{content:"\f173"}
@@ -200,8 +203,11 @@ article{padding:0;overflow:hidden}
 .mino-social #social a{transition:.2s all ease-in-out;}
 .mino-social #social a:hover{transition:.2s all ease-in-out;}
 .mino-social #social a.facebook:hover{color:#3b5999;}
-.mino-social #social a.twitter:hover{color:#55acee;}
-.mino-social #social a.gplus:hover{color:#dd4b39;}
+.mino-social #social a.twitter:hover,.mino-social #social a.x-twitter:hover{color:#000}
+.mino-social #social a.tiktok:hover{color:#000}
+.mino-social #social a.threads:hover{color:#000}
+.mino-social #social a.telegram:hover{color:#0088cc}
+.mino-social #social a.whatsapp:hover{color:#25D366}
 .mino-social #social a.youtube:hover{color:#cd201f;}
 .mino-social #social a.pinterest:hover{color:#bd081c;}
 .mino-social #social a.instagram:hover{color:#e4405f;}
@@ -285,7 +291,7 @@ ul#mino_menu{list-style:none;margin:0;padding:0;text-align: center;}
 #mino-menu ul li.hasSubmenu ul li:after,#mino-menu ul li:last-child:after{display:none}
 #mino-menu ul > li:hover > a{color:$maincolor}
 #mino-menu ul > li > ul > li a{font-size:14px;line-height:22px;display:block;color: #63636a;text-transform:uppercase;text-decoration:none;margin:0;padding:15px 25px;border-right:0;border:0}
-#mino-menu ul > li.hasSubmenu > a:after{content:'\f107';font-family:FontAwesome;float:right;margin-left:5px;font-size:12px;}
+#mino-menu ul > li.hasSubmenu > a:after{content:'\f107';font-family:"Font Awesome 7 Free";font-weight:900;float:right;margin-left:5px;font-size:12px;}
 #mino-menu ul > li:hover > ul,#mino-menu ul > li > ul > li:hover > ul{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);transform:translateY(0)}
 #mino-menu ul > li > ul > li.hasSubmenu > a:after{content:'\f105';float:right}
 
@@ -341,7 +347,7 @@ li.hasSubmenu.isMega > ul{position: absolute;width: 100%;left:0px;right:0px;}
 .mino-search-btn{position:absolute;right:0;top:0;z-index:99}
 .mino-search-btn a.mino-serch{cursor:pointer;display:block;height:60px;text-align:center;position:relative;right:0;top:0;width:50px;border-radius:0;box-sizing:border-box;color:#2f2f33}
 .mino-search-btn a.mino-serch:hover{color:$maincolor}
-.mino-search-btn a.mino-serch:before{color:#2f2f33;content: "\f4a5";font-family:Ionicons;font-size:20px;line-height:60px;}
+.mino-search-btn a.mino-serch:before{color:#2f2f33;content: "\f002";font-family:"Font Awesome 7 Free";font-weight:900;font-size:20px;line-height:60px;}
 .mino-search-btn span{list-style:none}
 
 /* Featued Post Widget */
@@ -357,9 +363,9 @@ li.hasSubmenu.isMega > ul{position: absolute;width: 100%;left:0px;right:0px;}
 .minofeatured .mino-secondary .mino-content .minofeatured-title{overflow:hidden;line-height:0;margin:0 0 2px;padding:0}
 .minofeatured .mino-secondary .mino-content .minofeatured-title a{color:#fff;font-weight:400;font-size:13px;line-height:1.5em}
 .mino-author{margin-right:10px}
-.mino-author::before{content:'\f47d';font-family: "Ionicons";color:#bbb;margin-right:5px}
+.mino-author::before{content:'\f007';font-family:"Font Awesome 7 Free";font-weight:400;color:#bbb;margin-right:5px}
 .mino-author,.mino-time{color:#bdbdbd;font-size:12px;font-weight:400}
-.mino-time:before{content: "\f402";font-family: "Ionicons";color:#bbb;margin-right:5px}
+.mino-time:before{content: "\f017";font-family:"Font Awesome 7 Free";font-weight:400;color:#bbb;margin-right:5px}
 .mino-label a {border:1px solid #fff;background: transparent;  border-radius: 0px;padding: 5px 10px;position: relative;display: inline-block;text-transform: uppercase;color: #fff;font-size: 12px;position: relative;line-height: 14px;margin-bottom: 5px;}
 .slidebg .minofeatured .mino-hero .mino-hero-content .minofeatured-title a{ font-size: 22px;line-height: 26px;font-weight: 600;padding: 10px 0px;}
 .slidebg .minofeatured .mino-hero .mino-hero-content .minofeatured-title a:hover,.minofeatured .mino-secondary .mino-content .minofeatured-title a:hover{color: $maincolor;}
@@ -385,7 +391,7 @@ object.mino-widget{padding: 30px 0px;display: block;width: 100%;}
 .mino-gallery-feature .feature-image{background-position: center center !important}
 .mino-gallery-feature .mino-iframe-hidden{display: none}
 .mino-gallery-feature .feature-image{height: 400px;width: 100%;background-size: cover !important;}
-.mino-gallery-feature .feature-image:after{content: "\f488";font-family: "Ionicons";font-size:60px;color: #fff;width: 100%;line-height: 400px;text-align: center; background: rgba(0,0,0,0.4);height: 100%;display: table;cursor:pointer}
+.mino-gallery-feature .feature-image:after{content: "\f03e";font-family:"Font Awesome 7 Free";font-weight:400;font-size:60px;color: #fff;width: 100%;line-height: 400px;text-align: center; background: rgba(0,0,0,0.4);height: 100%;display: table;cursor:pointer}
 .mino-gallery-feature h3{font-weight: 600;line-height: 40px;font-size:18px;margin-top:10px;}
 .mino-gallery-feature .article-meta span, .mino-gallery-feature .article-meta span a{color:#fff;}
 .mino-gallery-feature .article-meta span i{font-size:17px;padding:10px 5px;}
@@ -394,7 +400,7 @@ object.mino-widget{padding: 30px 0px;display: block;width: 100%;}
 .mino-gallery-post{/*width: 25%;float: left;*/box-sizing:border-box;padding:15px 8px;position:relative;}
 .mino-gallery-post:first-child{padding-left: 0px;}
 .mino-gallery-post .img_dyn{height: 108px;background-size:cover !important;position: relative;background-position:center center;}
-.mino-gallery-post .playing.img_dyn:after{content: "\f487";font-family: "Ionicons";font-size: 30px;color: #fff;width: 100%;line-height: 108px;text-align: center;background: rgba(0,0,0,0.4);height: 100%;display: table;cursor: pointer;}
+.mino-gallery-post .playing.img_dyn:after{content: "\f04b";font-family:"Font Awesome 7 Free";font-weight:900;font-size: 30px;color: #fff;width: 100%;line-height: 108px;text-align: center;background: rgba(0,0,0,0.4);height: 100%;display: table;cursor: pointer;}
 .mino-gallery-post h3 a{font-size: 14px;font-weight: 600;}
 .mino-gallery-post h3{padding: 10px 0px;line-height:18px;}
 .clearfix{clear:both;}
@@ -614,7 +620,7 @@ div.mino-empty{width: 100%;text-align:center;background:rgb(236,239,241);box-siz
 .comments .comment .comment-actions a{margin-right:5px;padding:2px 5px;font-weight:400;font-size:10px}
 .comments .comment .comment-actions a:hover{color:#fff;background-color:$maincolor;text-decoration:none}
 .comments .comments-content .datetime{color:#999;float:left;font-size:11px;position:relative;font-style:italic;margin:2px 0 0;display:block}
-.comments .comments-content .datetime:before{content:'\f017';font-family:fontawesome;font-style:normal;margin-right:3px}
+.comments .comments-content .datetime:before{content:'\f017';font-family:"Font Awesome 7 Free";font-weight:400;font-style:normal;margin-right:3px}
 .comments .comments-content .comment-header a{color:inherit}
 .comments .comments-content .comment-header a:hover{color:$maincolor}
 .comments .thread-toggle{margin-bottom:4px}
@@ -658,11 +664,11 @@ div.mino-empty{width: 100%;text-align:center;background:rgb(236,239,241);box-siz
 .showpageOf{display:none!important;overflow:hidden}
 #blog-pager .pages{margin:10px 0;border:none}
 .blog-pager-newer-link{background: #fff;font-size: 12px;padding-left: 7px;color: #2f2f33;border:0px solid #000}
-.blog-pager-newer-link:before{content: "\f2ca";font-family: "Ionicons";color: #2f2f33;padding: 10px;font-size: 14px;background: $(lightcolor) ;border-radius: 100%;text-align: center;margin: 10px;display: inline-block;line-height: 10px;}
+.blog-pager-newer-link:before{content: "\f060";font-family:"Font Awesome 7 Free";font-weight:900;color: #2f2f33;padding: 10px;font-size: 14px;background: $(lightcolor) ;border-radius: 100%;text-align: center;margin: 10px;display: inline-block;line-height: 10px;}
 .blog-pager-newer-link:hover{background: #fff;font-size: 12px;padding-left: 7px;color: #2f2f33;border:0px solid #000}
 .blog-pager-newer-link:hover:before{background:$maincolor;color: #fff}
 .blog-pager-older-link{background: #fff;font-size: 12px;padding-left: 7px;color: #2f2f33;border:0px solid #000}
-.blog-pager-older-link:after{content: "\f30f";font-family: "Ionicons";color: #2f2f33;padding: 10px;font-size: 14px;background: $(lightcolor) ;border-radius: 100%;text-align: center;margin: 10px;display: inline-block;line-height: 10px;}
+.blog-pager-older-link:after{content: "\f061";font-family:"Font Awesome 7 Free";font-weight:900;color: #2f2f33;padding: 10px;font-size: 14px;background: $(lightcolor) ;border-radius: 100%;text-align: center;margin: 10px;display: inline-block;line-height: 10px;}
 .blog-pager-older-link:hover{background: #fff;font-size: 12px;padding-left: 7px;color: #2f2f33;border:0px solid #000}
 .blog-pager-older-link:hover:after{background:$maincolor;color: #fff}
 .blockpad{display: block;margin-bottom: 0px;}
@@ -954,7 +960,7 @@ h1.post-title{font-size:17px}
 .search-transition-wrap .searchform .form-control, .search-transition-wrap .woocommerce-product-search .form-control{background:none;border:none;font-size:20px;color:#FFF;height:50px;padding:0;}
 .search-transition-wrap .searchform .form-control{width:100%;box-sizing:border-box;padding-right:60px;font-family: Montserrat;font-size: 30px;}
 .search-transition-wrap .input-group-btn button{position:absolute;right:0px;top:10px;border:0px;color:#fff;background:rgba(0,0,0,0);}
-.search-transition-wrap .input-group-btn button:before{font-family:"Ionicons";content:"\f4a5";font-size:25px;padding:10px;}
+.search-transition-wrap .input-group-btn button:before{font-family:"Font Awesome 7 Free";font-weight:900;content:"\f002";font-size:25px;padding:10px;}
 .search-transition-wrap form > .input-group{position:relative;}
 .search-transition-wrap .btn-mini-close{background:rgba(0, 0, 0, 0) none repeat scroll 0 0;border:medium none;color:#fff !important;font-size:35px;position:fixed;top:50px;right:50px;margin-right:0px;opacity:1;transition:0.4s;}
 .search-transition-wrap .btn-mini-close:hover{cursor:pointer;}
@@ -1133,15 +1139,14 @@ body#layout #content-wrapper{margin:0px;width:100%;}
 //<![CDATA[
 //CSS Ready
 function loadCSS(e,t,n){"use strict";var i=window.document.createElement("link");var o=t||window.document.getElementsByTagName("script")[0];i.rel="stylesheet";i.href=e;i.media="only x";o.parentNode.insertBefore(i,o);setTimeout(function(){i.media=n||"all"})}
-loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap");loadCSS("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
-loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
+loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap");loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css");
 //]]>
 </script>
 </head>
 <body expr:class='data:blog.pageType'>
 <a class='skip-link' href='#main-wrapper'>Skip to content</a>
 
-<div class='searchform-wrap search-transition-wrap'><div class='search-transition-inner'><form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary'><i aria-hidden='true' class='ti-search'/></button> </span></div></form>                                <button aria-label='Close search' class='btn-mini-close pull-right'><i class='ion-ios-close-empty'/></button></div></div>
+<div class='searchform-wrap search-transition-wrap'><div class='search-transition-inner'><form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary' type='submit'><i aria-hidden='true' class='fa-solid fa-magnifying-glass'/></button> </span></div></form>                                <button aria-label='Close search' class='btn-mini-close pull-right'><i class='fa-solid fa-xmark'/></button></div></div>
 <div class='adminbar' style='display:none'>
 <div class='theme-opt'>
 
@@ -1193,14 +1198,14 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
       <b:widget-setting name='link-3'>https://twitter.com/ThemeDaddy</b:widget-setting>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
       <b:widget-setting name='link-4'>https://www.facebook.com/themedaddynet/</b:widget-setting>
-      <b:widget-setting name='text-1'><![CDATA[<i class="fa fa-vine"></i>]]></b:widget-setting>
+      <b:widget-setting name='text-1'><![CDATA[<i class="fa-brands fa-threads"></i>]]></b:widget-setting>
       <b:widget-setting name='link-1'>#</b:widget-setting>
-      <b:widget-setting name='text-0'><![CDATA[<i class="fa fa-instagram"></i>]]></b:widget-setting>
+      <b:widget-setting name='text-0'><![CDATA[<i class="fa-brands fa-instagram"></i>]]></b:widget-setting>
       <b:widget-setting name='link-2'>#</b:widget-setting>
-      <b:widget-setting name='text-3'><![CDATA[<i class="fa fa-twitter"></i>]]></b:widget-setting>
+      <b:widget-setting name='text-3'><![CDATA[<i class="fa-brands fa-x-twitter"></i>]]></b:widget-setting>
       <b:widget-setting name='link-0'>#</b:widget-setting>
-      <b:widget-setting name='text-2'><![CDATA[<i class="fa fa-google-plus"></i>]]></b:widget-setting>
-      <b:widget-setting name='text-4'><![CDATA[<i class="fa fa-facebook"></i>]]></b:widget-setting>
+      <b:widget-setting name='text-2'><![CDATA[<i class="fa-brands fa-pinterest"></i>]]></b:widget-setting>
+      <b:widget-setting name='text-4'><![CDATA[<i class="fa-brands fa-facebook"></i>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 
@@ -1231,10 +1236,10 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
     <b:widget-setting name='link-4'>#</b:widget-setting>
     <b:widget-setting name='text-1'>pinterest</b:widget-setting>
     <b:widget-setting name='text-0'>instagram</b:widget-setting>
-    <b:widget-setting name='text-3'>gplus</b:widget-setting>
+    <b:widget-setting name='text-3'>tiktok</b:widget-setting>
     <b:widget-setting name='text-2'>youtube</b:widget-setting>
     <b:widget-setting name='text-5'>facebook</b:widget-setting>
-    <b:widget-setting name='text-4'>twitter</b:widget-setting>
+    <b:widget-setting name='text-4'>x-twitter</b:widget-setting>
     <b:widget-setting name='sorting'>NONE</b:widget-setting>
     <b:widget-setting name='link-1'>#</b:widget-setting>
     <b:widget-setting name='link-2'>#</b:widget-setting>
@@ -1515,7 +1520,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
 <div class='mino-wrapper padders'>
   <div class='body-row midalizer'>
     <p>It looks like nothing was found at this location. Maybe try a search?</p>
-<form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary'><i aria-hidden='true' class='ion-ios-search'/></button> </span></div><div/></form>
+<form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary' type='submit'><i aria-hidden='true' class='fa-solid fa-magnifying-glass'/></button> </span></div><div/></form>
 </div>
 </div>
 <!--ERROR PAGE-->
@@ -2132,7 +2137,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
                    <div class='mino-head'>
                      <h3 class='entry-title'><a expr:href='data:post.url' rel='bookmark'><data:post.title/></a></h3>
 					  <div class='article-meta clearfix'>
-							<span class='byline'><i aria-hidden='true' class='ion-ios-person-outline'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='ion-ios-clock-outline'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
+							<span class='byline'><i aria-hidden='true' class='fa-regular fa-user'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='fa-regular fa-clock'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
 					</div>
 				  </div>
 				</div>
@@ -2155,7 +2160,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
                    <div class='mino-head'>
                      <h3 class='entry-title'><a expr:href='data:post.url' rel='bookmark'><data:post.title/></a></h3>
 					  <div class='article-meta clearfix'>
-							<span class='byline'><i aria-hidden='true' class='ion-ios-person-outline'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='ion-ios-clock-outline'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
+							<span class='byline'><i aria-hidden='true' class='fa-regular fa-user'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='fa-regular fa-clock'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
 					</div>
 				  </div>
 				</div>
@@ -2179,7 +2184,7 @@ loadCSS("https://cdn.jsdelivr.net/npm/ionicons@2.0.1/css/ionicons.min.css");
                    <div class='mino-head'>
                      <h3 class='entry-title'><a expr:href='data:post.url' rel='bookmark'><data:post.title/></a></h3>
 					  <div class='article-meta clearfix'>
-							<span class='byline'><i aria-hidden='true' class='ion-ios-person-outline'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='ion-ios-clock-outline'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
+							<span class='byline'><i aria-hidden='true' class='fa-regular fa-user'/><span class='author vcard'><a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a></span></span><span class='posted-on'><i aria-hidden='true' class='fa-regular fa-clock'/><a expr:href='data:post.url' rel='bookmark'><time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/></a></span></div>
 					</div>
 				  </div>
 				</div>
@@ -2218,13 +2223,13 @@ a.postmarg .article-meta, .postmarg .article-meta a,.postmarg .article-meta i{co
 			   </div>
                <div class='article-meta clearfix'>
 					<span class='byline'>
-						<i aria-hidden='true' class='ion-ios-person-outline'/>
+						<i aria-hidden='true' class='fa-regular fa-user'/>
 						<span class='author vcard'>
                           <a class='url fn n' expr:href='data:post.authorUrl'><data:post.author/></a>
 						</span>
 					</span>
 					<span class='posted-on'>
-						<i aria-hidden='true' class='ion-ios-clock-outline'/>
+						<i aria-hidden='true' class='fa-regular fa-clock'/>
                         <a expr:href='data:post.url' rel='bookmark'>
                             <time class='entry-date published format-date' expr:datetime='data:post.timestampISO8601'/>
                         </a>
@@ -2261,13 +2266,13 @@ a.postmarg .article-meta, .postmarg .article-meta a,.postmarg .article-meta i{co
               <ul class='social-icons list-unstyled list-inline'>
                 <li class='social-item facebook'>
                   <a class='post_share_facebook facebook' expr:href='&quot;http://www.facebook.com/sharer.php?u=&quot; + data:post.url' onclick='javascript:window.open(this.href,&apos;&apos;, &apos;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600&apos;);return false;' title='facebook'>
-                    <i class='fa fa-facebook'>
+                    <i class='fa-brands fa-facebook'>
                     </i> facebook
                   </a>
                 </li>
                 <li class='social-item twitter'>
                   <a class='product_share_twitter twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url' onclick='javascript:window.open(this.href,&apos;&apos;, &apos;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600&apos;);return false;' title='twitter'>
-                    <i class='fa fa-twitter'>
+                    <i class='fa-brands fa-x-twitter'>
                     </i> twitter
                   </a>
                 </li>
@@ -3444,7 +3449,7 @@ function initMegaMenus() {
       var perStage = parseInt(data.feed.openSearch$itemsPerPage.$t, 10);
       var stages = Math.ceil(total / perStage);
       var html = '<ul data-itemnums="' + perStage + '" data-label="' + label + '" data-start="' + start + '" data-stages="' + stages + '" data-cstage="1" data-tpst="' + total + '">' +
-        '<div class="mega-nav"><a aria-label="Previous posts" class="mega-prev disable" href="javascript:;" role="button"><i aria-hidden="true" class="fa fa-arrow-left"></i></a><a aria-label="Next posts" class="mega-next" href="javascript:;" role="button"><i aria-hidden="true" class="fa fa-arrow-right"></i></a></div>' +
+        '<div class="mega-nav"><a aria-label="Previous posts" class="mega-prev disable" href="javascript:;" role="button"><i aria-hidden="true" class="fa-solid fa-arrow-left"></i></a><a aria-label="Next posts" class="mega-next" href="javascript:;" role="button"><i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a></div>' +
         '<div class="mino-mega-loading" style="display:none"><div class="mino-loading-inner"><div class="mino-thecube"><div class="mino-cube mino-c1"></div><div class="mino-cube mino-c2"></div><div class="mino-cube mino-c4"></div><div class="mino-cube mino-c3"></div></div></div></div>' +
         '<div class="mega-inner row">' + data.feed.entry.map(minoMegaItemHtml).join("") + "</div></ul>";
       link.insertAdjacentHTML("afterend", html);
@@ -3779,10 +3784,10 @@ article {
 <script type='text/javascript'>
   /*<![CDATA[*/
     var numPages=5;
-    var firstText ='<i class="fa fa-arrow-left" aria-hidden="true"></i> First';
-    var lastText ='Last <i class="fa fa-arrow-right" aria-hidden="true"></i>';
-    var prevText ='<i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-only">Previous page</span>';
-    var nextText ='<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Next page</span>';
+    var firstText ='<i class="fa-solid fa-arrow-left" aria-hidden="true"></i> First';
+    var lastText ='Last <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+    var prevText ='<i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span class="sr-only">Previous page</span>';
+    var nextText ='<i class="fa-solid fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Next page</span>';
     var urlactivepage=location.href;
     var home_page="/";
   /*]]>*/
@@ -3834,7 +3839,7 @@ function minoNoPostsPanel(label) {
 }
 
 function minoShareIconsHtml(url) {
-  return '<div class="mino-post-share"><div class="mino-cell"><ul class="social-icons list-unstyled list-inline"><li class="social-item facebook"> <a href="https://www.facebook.com/sharer.php?u=' + url + '" title="facebook" class="post_share_facebook facebook" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600\');return false;"> <i class="fa fa-facebook"></i> </a></li><li class="social-item twitter"> <a href="https://twitter.com/share?url=' + url + '" title="twitter" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600\');return false;" class="product_share_twitter twitter"> <i class="fa fa-twitter"></i> </a></li><li class="social-item pinterest"> <a href="https://pinterest.com/pin/create/button/?url=' + url + '" class="pinterest" title="pinterest" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"> <i class="fa fa-pinterest"></i> </a></li></ul></div></div>';
+  return '<div class="mino-post-share"><div class="mino-cell"><ul class="social-icons list-unstyled list-inline"><li class="social-item facebook"> <a href="https://www.facebook.com/sharer.php?u=' + url + '" title="facebook" class="post_share_facebook facebook" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600\');return false;"> <i class="fa-brands fa-facebook"></i> </a></li><li class="social-item twitter"> <a href="https://twitter.com/share?url=' + url + '" title="twitter" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600\');return false;" class="product_share_twitter twitter"> <i class="fa-brands fa-x-twitter"></i> </a></li><li class="social-item pinterest"> <a href="https://pinterest.com/pin/create/button/?url=' + url + '" class="pinterest" title="pinterest" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"> <i class="fa-brands fa-pinterest"></i> </a></li></ul></div></div>';
 }
 
 function minoRenderListWidget(widget, data) {
@@ -3848,9 +3853,9 @@ function minoRenderListWidget(widget, data) {
       var published = entry.published.$t;
       var date = minoFormatLongDate(published);
       var image = minoEntryImage(entry, index === 0 ? "s800" : "s400");
-      var metaTime = '<span class="posted-on"><i class="fa fa-clock-o"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span>";
+      var metaTime = '<span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span>";
       if (index === 0) {
-        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + title + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa fa-user-o"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
+        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + title + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
       } else {
         html += '<article class="mino-post"><div class="article-image"><div class="post-image"><a aria-label="' + minoAttr(title) + '" href="' + url + '" style="background:black url(' + image + ')" rel="bookmark"></a></div></div><div class="article-content side-item-text"><div class="entry-header"><div class="entry-header-title"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta">' + metaTime + "</div></div></article>";
       }
@@ -3888,7 +3893,7 @@ function minoRenderGalleryWidget(widget, data) {
     var date = minoFormatLongDate(published);
     var media = minoGalleryImage(entry);
     if (index === 0) {
-      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + title + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa fa-user-o"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> <span class="posted-on"><i class="fa fa-clock-o"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
+      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + title + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> <span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
     }
     slidesHtml += '<div class="swiper-slide mino-gallery-post slide item dy-dn"><div class="' + state + " " + media.id + ' img_dyn getinfo" data-vidid="' + media.id + '" data-img="' + media.img + '" style="background:url(' + media.img + ')" data-auth="' + author + '" data-auth-uri="' + authorUrl + '" data-time="' + date + '"></div><div class="mino-slide-title"><h3><a href="' + url + '">' + title + "</a></h3></div></div>";
     if (index === 0) state = "playing";
@@ -3960,7 +3965,7 @@ function initCustomWidgets() {
         if (l.rel === "alternate") {
           var widgetBox = widget.closest(".widget");
           var heading = widgetBox ? widgetBox.querySelector("h2.title") : null;
-          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + l.href + "?&max-results=" + perPage + '" >view all <i class="fa fa-arrow-right"></i></a></div>');
+          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + l.href + "?&max-results=" + perPage + '" >view all <i class="fa-solid fa-arrow-right"></i></a></div>');
         }
       });
       if (type === "list") minoRenderListWidget(widget, data);

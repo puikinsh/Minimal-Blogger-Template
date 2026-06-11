@@ -2,6 +2,14 @@
 
 All notable changes to the Minimal Blogger Template are documented in this file.
 
+## [2.1.0] - 2026-06-11
+
+### Changed
+
+- **Font Awesome 4.7 + Ionicons 2.0.1 consolidated into Font Awesome 7.2.0** — one icon library instead of two 2014-era ones; every icon class and CSS glyph migrated
+- **Social icons modernized** — Google+ and Vine defaults replaced with TikTok, Threads, Pinterest, and X (Twitter); the social bar gains TikTok, Threads, Telegram, and WhatsApp support; the legacy Twitter bird gives way to the X glyph
+- Search submit buttons carry an explicit `type='submit'`
+
 ## [2.0.0] - 2026-06-11
 
 Major modernization release: zero frameworks, zero render-blocking external assets, structured data, and a full accessibility pass.

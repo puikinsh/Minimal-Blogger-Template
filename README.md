@@ -1,7 +1,8 @@
 # Minimal — Free Clean & Minimal Blogger Template
 
-[![Version](https://img.shields.io/badge/Version-2.0.0-2942ee.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.1.0-2942ee.svg)](CHANGELOG.md)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Font Awesome](https://img.shields.io/badge/Font%20Awesome-7-528DD7?logo=fontawesome&logoColor=white)](https://fontawesome.com/)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-zero_frameworks-F7DF1E?logo=javascript&logoColor=black)](http://vanilla-js.com/)
 
 Minimal is a free, open-source Blogger/Blogspot template with a sleek, clean design that keeps the focus on your content. Built with 100% vanilla JavaScript and lean custom CSS — no jQuery, no Bootstrap, and zero render-blocking external assets. Created and maintained by [Colorlib](https://colorlib.com).
