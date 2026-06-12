@@ -1467,7 +1467,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
 <b:section class='ad-home-widget' id='mino-advert-1' maxwidgets='1' name='Home Advertisement [Full Width]' preferred='no' showaddelement='no'>
   <b:widget id='HTML994' locked='false' title='Full width home advertisement' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img alt="Advertisement" style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -1536,7 +1536,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
 <b:section class='ad-top-widget' id='mino-advert-2' maxwidgets='1' name='Post Page Advertisement [Top]' preferred='no' showaddelement='no'>
   <b:widget id='HTML991' locked='true' title='Post Page Advertisement [Top]' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img alt="Advertisement" style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -2120,7 +2120,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
            <article class='hentry mino-first-article'>
              <div class='mino-article-image'>
                <b:if cond='data:post.firstImageUrl'>&lt;div class=&#39;post-image&#39; style=&quot;background:url(<data:post.firstImageUrl/>)&quot;&gt;<b:else/>&lt;div class=&#39;post-image empty-post-image&#39; &gt;</b:if>
-                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' expr:src='resizeImage(data:post.firstImageUrl, 800)'/><b:else/><img class='mino-featured-wid' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png'/></b:if></a>-->
+                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' expr:src='resizeImage(data:post.firstImageUrl, 800)' loading='lazy'/><b:else/><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png' loading='lazy'/></b:if></a>-->
 
 				&lt;/div&gt;
 			 </div>
@@ -2143,7 +2143,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
            <article class='hentry mino-first-article'>
              <div class='mino-article-image'>
               <b:if cond='data:post.firstImageUrl'>&lt;div class=&#39;post-image&#39; style=&quot;background:url(<data:post.firstImageUrl/>)&quot;&gt;<b:else/>&lt;div class=&#39;post-image empty-post-image&#39; &gt;</b:if>
-                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' expr:src='resizeImage(data:post.firstImageUrl, 800)'/><b:else/><img class='mino-featured-wid' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png'/></b:if></a>-->
+                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' expr:src='resizeImage(data:post.firstImageUrl, 800)' loading='lazy'/><b:else/><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png' loading='lazy'/></b:if></a>-->
 
 				&lt;/div&gt;
 			 </div>
@@ -2167,7 +2167,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
            <article class='hentry mino-first-article'>
              <div class='mino-article-image'>
                <b:if cond='data:post.firstImageUrl'>&lt;div class=&#39;post-image&#39; style=&quot;background:url(<data:post.firstImageUrl/>)&quot;&gt;<b:else/>&lt;div class=&#39;post-image empty-post-image&#39; &gt;</b:if>
-                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' expr:src='resizeImage(data:post.firstImageUrl, 800)'/><b:else/><img class='mino-featured-wid' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png'/></b:if></a>-->
+                <!-- <a expr:href='data:post.url'><b:if cond='data:post.firstImageUrl'><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' expr:src='resizeImage(data:post.firstImageUrl, 800)' loading='lazy'/><b:else/><img class='mino-featured-wid' decoding='async' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-wPwjv7-YYGY/Wc98wlDT8qI/AAAAAAAAAEE/mH8YkPl8qJAH9FMuFKcShQvXXYMmVyrIgCLcBGAs/s1600/notfound.png' loading='lazy'/></b:if></a>-->
 
 				&lt;/div&gt;
 			 </div>
@@ -2763,7 +2763,7 @@ var msg = &#39;<data:navMessage/>&#39;;
 <b:section class='ad-bottom-widget' id='mino-advert-3' maxwidgets='1' name='Bottom Ad [Post Page]' preferred='no' showaddelement='no'>
   <b:widget id='HTML988' locked='true' title='Bottom Ad [Post Page]' type='HTML' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img alt="Advertisement" style="width:100%;" src="https://2.bp.blogspot.com/-vkooCNOHzKw/WqbQQk7MDtI/AAAAAAAABI4/bRC-UVtU5A0YAWewTLql3H2zUGBhc8uewCLcBGAs/s1600/728-1.jpg"/></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -2800,7 +2800,7 @@ var msg = &#39;<data:navMessage/>&#39;;
       </b:widget>
       <b:widget id='HTML2' locked='false' title='Advertisement' type='HTML' version='1'>
         <b:widget-settings>
-          <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img style="width:100%;" src="https://4.bp.blogspot.com/-bFLgntNi4jE/WqbRI3TpArI/AAAAAAAABJI/rJtfBMPNt4A8QpDETqNu4PiUHUoiZsRwwCLcBGAs/s1600/AD300.jpg"/></a>]]></b:widget-setting>
+          <b:widget-setting name='content'><![CDATA[<a href="https://colorlib.com" target="_blank"><img alt="Advertisement" style="width:100%;" src="https://4.bp.blogspot.com/-bFLgntNi4jE/WqbRI3TpArI/AAAAAAAABJI/rJtfBMPNt4A8QpDETqNu4PiUHUoiZsRwwCLcBGAs/s1600/AD300.jpg"/></a>]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -3569,7 +3569,7 @@ function initFeaturedGrid() {
           }
         });
       } else {
-        html += '<style>.mino-empty-panel img{max-width: 600px; width:100%}.mino-empty-panel{text-align: center;}.mino-empty-text h3{font-weight: 600;font-size:18px;line-height: 24px;margin-bottom:50px;}</style><div class="mino-empty-panel"><div class="mino-empty-thumb"><img src="https://1.bp.blogspot.com/-FCuCIgXt2v8/WdDfhsYYoZI/AAAAAAAAAhk/X-ke9mcD1KsrOnsxV2z15nup1TkXkw36wCLcBGAs/s1600/trpgrid.png"></div><div class="mino-empty-text"><h3>No posts found for label : "' + label + '". <br/> <span class="mino-small">You can disable this widget by removing all the widget content from layout tab.</span></h3></div></div>';
+        html += '<style>.mino-empty-panel img{max-width: 600px; width:100%}.mino-empty-panel{text-align: center;}.mino-empty-text h3{font-weight: 600;font-size:18px;line-height: 24px;margin-bottom:50px;}</style><div class="mino-empty-panel"><div class="mino-empty-thumb"><img alt="" src="https://1.bp.blogspot.com/-FCuCIgXt2v8/WdDfhsYYoZI/AAAAAAAAAhk/X-ke9mcD1KsrOnsxV2z15nup1TkXkw36wCLcBGAs/s1600/trpgrid.png"></div><div class="mino-empty-text"><h3>No posts found for label : "' + label + '". <br/> <span class="mino-small">You can disable this widget by removing all the widget content from layout tab.</span></h3></div></div>';
       }
       html += "</div>";
       content.innerHTML = html;
@@ -3584,7 +3584,7 @@ function initFeaturedGrid() {
 }
 
 // ---- Sidebar feed widgets: recent comments, recent posts, posts by tag ----
-var MINO_EMPTY_PANEL = '<style>.mino-empty-panel img{max-width: 600px; width:100%}.mino-empty-panel{text-align: center;}.mino-empty-text h3{font-weight: 600;font-size:18px;line-height: 24px;margin-bottom:50px;}.bgr{background: rgb(236,239,241);}.bgr{box-sizing: border-box;padding:5px 10px;}</style><div class="mino-empty-panel bgr"><div class="mino-empty-thumb"><img src="' + MINO_NO_THUMB + '"></div><div class="mino-empty-text"><h3>{message} <br/></h3></div></div>';
+var MINO_EMPTY_PANEL = '<style>.mino-empty-panel img{max-width: 600px; width:100%}.mino-empty-panel{text-align: center;}.mino-empty-text h3{font-weight: 600;font-size:18px;line-height: 24px;margin-bottom:50px;}.bgr{background: rgb(236,239,241);}.bgr{box-sizing: border-box;padding:5px 10px;}</style><div class="mino-empty-panel bgr"><div class="mino-empty-thumb"><img alt="" src="\' + MINO_NO_THUMB + \'"></div><div class="mino-empty-text"><h3>{message} <br/></h3></div></div>';
 
 function minoRecentItemHtml(entry) {
   var url = minoEntryUrl(entry);
@@ -3623,7 +3623,7 @@ function initSidebarFeedWidgets() {
           var avatar = entry.author[0].gd$image.src;
           if (avatar.indexOf("img1.blogblog.com/img/blank.gif") > -1 || avatar.indexOf("img2.blogblog.com/img/b16-rounded.gif") > -1) avatar = "https://img1.blogblog.com/img/anon36.png";
           if (avatar.indexOf("//") === 0) avatar = "https:" + avatar;
-          html += '<div class="mino-comment"><div class="mino-comment-profile"><img class="mino-comment-thumb" loading="lazy" src="' + avatar + '"/></div><a href="' + url + '">' + author + '</a><span>"' + text + '"</span></div>';
+          html += '<div class="mino-comment"><div class="mino-comment-profile"><img alt="" class="mino-comment-thumb" loading="lazy" src="' + avatar + '"/></div><a href="' + url + '">' + author + '</a><span>"' + text + '"</span></div>';
         });
       } else {
         html += MINO_EMPTY_PANEL.replace("{message}", "No comments!");
