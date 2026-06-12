@@ -846,12 +846,6 @@ article .mino-article-image{overflow: hidden;position: relative;}
 .posttitle{margin: 20px;}
 .only-post{display: none}
 
-/*OWL*/
-/**
- * Owl Carousel v2.2.1
- * Copyright 2013-2017 David Deutsch
- * Licensed under  ()
- */
 
 @media only screen and (max-width: 1200px) {
 .body-row{width:96%!important;margin:0 auto;float:none}
@@ -1014,7 +1008,7 @@ body#layout .mino-sidebar-tab {
   display: none;
 }
 body#layout .adminbar:after {
-  content: "(C) Copyright 2018, Colorlib. All Rights reserved.";
+  content: "(C) Copyright 2026, Colorlib. All Rights reserved.";
   position: absolute;
   bottom: 10px;
   width: 280px;
@@ -3261,7 +3255,7 @@ var msg = &#39;<data:navMessage/>&#39;;
         <div class='mino-cwrap body-row'>
 
                     <div class='mino-credit_copyright'>
-                      Copyright 2018, <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>. All rights Reserved. Template by <a href="https://colorlib.com">Colorlib</a>. </div>
+                      Copyright <span class='copyright-year'>2026</span>, <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>. All rights Reserved. Template by <a href="https://colorlib.com">Colorlib</a>. </div>
 
 
 
@@ -3995,6 +3989,11 @@ document.querySelectorAll(".Label a, .mino-max-limit").forEach(function (a) {
   var href = a.getAttribute("href");
   if (href && href.indexOf("max-results=") === -1) a.setAttribute("href", href + "?&max-results=" + perPage);
 });
+//]]>
+</script>
+<script>
+//<![CDATA[
+document.querySelectorAll(".copyright-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 //]]>
 </script>
 </body>
