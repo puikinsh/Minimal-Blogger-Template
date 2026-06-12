@@ -2281,7 +2281,11 @@ a.postmarg .article-meta, .postmarg .article-meta a,.postmarg .article-meta i{co
 <div class='box box-author'>
   <div class='post-author'>
     <div class='author-img'>
-      <img alt='' class='avatar avatar-100 photo' expr:src='data:post.authorPhoto.url' height='100' loading='lazy' width='100'/>
+      <b:if cond='data:post.authorPhoto.url'>
+        <img alt='' class='avatar avatar-100 photo' expr:src='data:post.authorPhoto.url' height='100' loading='lazy' width='100'/>
+      <b:else/>
+        <img alt='' class='avatar avatar-100 photo' height='100' loading='lazy' width='100' src='https://lh3.googleusercontent.com/a/default-user=s100-c'/>
+      </b:if>
     </div>
     <div class='author-content'>
       <div class='top-author'>
