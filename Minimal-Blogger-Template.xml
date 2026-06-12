@@ -79,13 +79,19 @@
 </Group>
 -----------------------
 */
+/* Contact form base (Blogger's widget CSS bundle is disabled) */
+.contact-form-widget,.contact-form-widget form{width:100%;max-width:none}
+.contact-form-name,.contact-form-email{display:block;width:100%;max-width:none;height:38px;margin:5px 0 12px;padding:8px 10px;box-sizing:border-box;font-size:13px}
+.contact-form-email-message{display:block;width:100%;max-width:none;margin:5px 0 12px;padding:8px 10px;box-sizing:border-box;min-height:110px;font-size:13px}
+.contact-form-button-submit{margin-top:5px;color:#fff;font-size:13px;letter-spacing:.5px;cursor:pointer;border-radius:3px}
+
 
 /* Bootstrap replacement - only the pieces this template actually uses
 ----------------------------------------------------------------------- */
 *,*::before,*::after{box-sizing:border-box}
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
 .row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
-.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:15px;padding-left:15px}
+.row>[class*='col-']{flex-shrink:0;width:100%;max-width:100%;padding-right:15px;padding-left:15px}
 .col-md-12{flex:0 0 auto;width:100%}
 @media (min-width:768px){.col-md-6{flex:0 0 auto;width:50%}}
 @media (min-width:576px){.col-sm-3{flex:0 0 auto;width:25%}}
@@ -1140,7 +1146,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
 <body expr:class='data:blog.pageType'>
 <a class='skip-link' href='#main-wrapper'>Skip to content</a>
 
-<div class='searchform-wrap search-transition-wrap'><div class='search-transition-inner'><form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary' type='submit'><i aria-hidden='true' class='fa-solid fa-magnifying-glass'/></button> </span></div></form>                                <button aria-label='Close search' class='btn-mini-close pull-right'><i class='fa-solid fa-xmark'/></button></div></div>
+<div class='searchform-wrap search-transition-wrap'><div class='search-transition-inner'><form action='/search' class='searchform' method='get'><div class='input-group'> <input class='form-control' name='q' placeholder='Search ... ' type='text' value=''/> <span class='input-group-btn'> <button aria-label='Search' class='btn btn-primary' type='submit'></button> </span></div></form>                                <button aria-label='Close search' class='btn-mini-close pull-right'><i class='fa-solid fa-xmark'/></button></div></div>
 <div class='adminbar' style='display:none'>
 <div class='theme-opt'>
 
