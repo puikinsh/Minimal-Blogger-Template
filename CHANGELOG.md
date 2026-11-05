@@ -2,6 +2,21 @@
 
 All notable changes to the Minimal Blogger Template are documented in this file.
 
+## [2.3.0] - 2026-11-05
+
+### Fixed
+
+- Numbered pagination keeps native Older/Newer links in one bar and falls back for ambiguous dates, short pages, invalid data or failed requests. Search and native cursor URLs retain server navigation.
+- JSON-LD values use Blogger JSON escaping; article schema is shared by desktop and mobile post renderers, with optional modification dates.
+- Blogger supplies Open Graph metadata without duplicate template tags; image-only logos retain a listing-page heading.
+- Label page-size links preserve existing query strings, fragments and explicit limits. Feed titles/authors are escaped when rendered as HTML.
+- Wide images, embeds, tables, code and long words stay within narrow post columns; navigation wraps and respects reduced-motion preferences.
+- Escape and validate Disqus configuration; load the HTTPS embed only when its discussion container exists and becomes visible.
+
+### Added
+
+- Dependency-free XML/JavaScript/JSON-LD checks, Chrome regression fixtures, contributor instructions and an upgrade/rollback guide.
+
 ## [2.2.0] - 2026-06-12
 
 Stability and polish release: layout regressions fixed, menus made instant and reliable, typography refined, and accessibility tightened.

@@ -3,7 +3,7 @@
 <!--
 =============================================================
  Minimal - Free Clean & Minimal Blogger Template
- Version: 2.2.0
+ Version: 2.3.0
  Author: Colorlib (https://colorlib.com)
  Demo: https://minimal-preview.blogspot.com
  License: GPL v3 (https://www.gnu.org/licenses/gpl-3.0)
@@ -30,19 +30,9 @@
     <b:include data='blog' name='all-head-content'/>
 
     <!-- Social sharing meta -->
-    <meta expr:content='data:blog.pageTitle' property='og:title'/>
-    <b:if cond='data:blog.pageType == &quot;item&quot;'>
-    <meta content='article' property='og:type'/>
-    <b:else/>
-    <meta content='website' property='og:type'/>
-    </b:if>
-    <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
-    <b:if cond='data:blog.postImageUrl'>
-    <meta expr:content='data:blog.postImageUrl' property='og:image'/>
-    </b:if>
-    <b:if cond='data:blog.metaDescription'>
-    <meta expr:content='data:blog.metaDescription' property='og:description'/>
-    </b:if>
+
+
+
     <meta content='summary_large_image' name='twitter:card'/>
     <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
     <b:if cond='data:blog.postImageUrl'>
@@ -56,11 +46,11 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "<data:blog.title/>",
-      "url": "<data:blog.homepageUrl/>",
+      "name": "<data:blog.title.jsonEscaped/>",
+      "url": "<data:blog.homepageUrl.jsonEscaped/>",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "<data:blog.homepageUrl/>search?q={search_term_string}",
+        "target": "<data:blog.homepageUrl.jsonEscaped/>search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -1002,6 +992,21 @@ padding: 20px 0px;
 .mega-inner{transition:opacity .15s ease}
 .mega-inner.mega-busy{opacity:.35;pointer-events:none}
 
+
+/* Resilient navigation and narrow post content */
+#blog-pager,#shutter-pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;clear:both}
+.colorlib-numbers{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:100%}
+.colorlib-numbers>a,.colorlib-numbers>button,.colorlib-numbers>[aria-current],.colorlib-loadmore{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px 12px;border:1px solid currentColor;border-radius:3px;background:transparent;color:inherit;font:inherit;line-height:1.4;cursor:pointer}
+.colorlib-numbers>[aria-current]{font-weight:bold;cursor:default}
+.colorlib-numbers button:disabled{opacity:.55;cursor:wait}
+#blog-pager [hidden],#shutter-pager [hidden]{display:none!important}
+.colorlib-numbers a:focus-visible,.colorlib-numbers button:focus-visible,.colorlib-loadmore:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.post-body{min-width:0;overflow-wrap:anywhere}
+.post-body img,.post-body video,.post-body iframe{max-width:100%}
+.post-body pre{max-width:100%;overflow-x:auto;white-space:pre}
+.post-body table{display:block;max-width:100%;overflow-x:auto}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
 ]]></b:skin>
 <b:template-skin>
 <![CDATA[
@@ -1173,6 +1178,107 @@ body#layout #content-wrapper{margin:0px;width:100%;}
 //CSS Ready
 function loadCSS(e,t,n){"use strict";var i=window.document.createElement("link");var o=t||window.document.getElementsByTagName("script")[0];i.rel="stylesheet";i.href=e;i.media="only x";o.parentNode.insertBefore(i,o);setTimeout(function(){i.media=n||"all"})}
 loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap");loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css");
+//]]>
+</script>
+<script type='text/javascript'>
+//<![CDATA[
+// Progressive pagination: Blogger's server-rendered links remain the fallback.
+function colorlibLimitUrl(href, size) {
+  try {
+    var url = new URL(href, location.href);
+    if (url.origin === location.origin && url.pathname.indexOf('/search/label/') === 0 &&
+        !url.searchParams.has('max-results') && Number.isSafeInteger(Number(size)) && Number(size) > 0) {
+      url.searchParams.set('max-results', size);
+    }
+    return url.href;
+  } catch (_) { return href; }
+}
+
+function colorlibText(value) {
+  return String(value == null ? '' : value).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function colorlibNumberedPager(config) {
+  var url = new URL(location.href);
+  var label = url.pathname.match(/^\/search\/label\/([^/]+)\/?$/);
+  if (url.pathname !== '/' && url.pathname !== '/search' && !label) return;
+  if (url.searchParams.has('q') || url.searchParams.has('updated-min') || url.searchParams.has('reverse-paginate')) return;
+  var current = Number((url.hash.match(/^#PageNo=(\d+)$/) || [0, 1])[1]);
+  if (!Number.isSafeInteger(current) || current < 1 || (url.searchParams.has('updated-max') && !url.hash.match(/^#PageNo=\d+$/))) return;
+  var pager = document.querySelector(config.pager);
+  if (!pager || pager.querySelector('.colorlib-numbers')) return;
+  var older = pager.querySelector(config.older);
+  var size = Number(url.searchParams.get('max-results') || (older && new URL(older.href).searchParams.get('max-results')) || config.size);
+  if (!Number.isSafeInteger(size) || size < 1 || size > 150) return;
+  var feed = '/feeds/posts/summary' + (label ? '/-/' + label[1] : '');
+  var area, request = 0, last;
+  function get(path) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 15000);
+    return fetch(path, {signal:controller.signal}).then(function (r) {
+      if (!r.ok) throw new Error('Feed unavailable');
+      return r.json();
+    }).finally(function () { clearTimeout(timer); });
+  }
+  function fallback() { if (area) area.remove(); }
+  function jump(page) {
+    if (!Number.isSafeInteger(page) || page < 2 || page > last) return;
+    var token = ++request;
+    area.setAttribute('aria-busy', 'true');
+    area.querySelectorAll('button').forEach(function (b) { b.disabled = true; });
+    get(feed + '?alt=json&orderby=published&start-index=' + ((page - 1) * size) + '&max-results=2')
+      .then(function (data) {
+        if (token !== request) return;
+        var entries = data.feed.entry || [];
+        var previous = entries[0] && entries[0].published.$t;
+        var next = entries[1] && entries[1].published.$t;
+        if (!Number.isFinite(Date.parse(previous)) || !Number.isFinite(Date.parse(next)) || Date.parse(previous) <= Date.parse(next)) return fallback();
+        var target = new URL(label ? url.pathname : '/search', location.origin);
+        target.searchParams.set('updated-max', previous);
+        target.searchParams.set('max-results', size);
+        target.hash = 'PageNo=' + page;
+        location.href = target.href;
+      }).catch(function () { if (token === request) fallback(); });
+  }
+  get(feed + '?alt=json&orderby=published&max-results=' + (size + 1)).then(function (data) {
+    var total = Number(data.feed.openSearch$totalResults.$t), entries = data.feed.entry || [];
+    if (!Number.isSafeInteger(total) || total <= size || entries.length < Math.min(total, size + 1)) return;
+    last = Math.ceil(total / size);
+    if (current > last || document.querySelectorAll(config.posts).length !== Math.min(size, total - (current - 1) * size)) return;
+    for (var i = 0; i < entries.length; i++) {
+      var time = Date.parse(entries[i].published && entries[i].published.$t);
+      if (!Number.isFinite(time) || (i && time >= Date.parse(entries[i - 1].published.$t))) return;
+    }
+    area = document.createElement('span');
+    area.className = 'colorlib-numbers';
+    var start = Math.max(1, current - 2), end = Math.min(last, start + 4);
+    var pages = [];
+    if (start > 1) pages.push(1);
+    for (var page = start; page <= end; page++) pages.push(page);
+    if (end < last) pages.push(last);
+    pages.forEach(function (page) {
+      var control = document.createElement(page === current ? 'span' : page === 1 ? 'a' : 'button');
+      control.textContent = page;
+      if (page === current) control.setAttribute('aria-current', 'page');
+      else if (page === 1) {
+        var first = new URL(label ? url.pathname : '/', location.origin);
+        first.searchParams.set('max-results', size);
+        control.href = first.href;
+      } else {
+        control.type = 'button';
+        control.setAttribute('aria-label', 'Page ' + page);
+        control.addEventListener('click', function () { jump(page); });
+      }
+      area.appendChild(control);
+    });
+    pager.setAttribute('role', 'navigation');
+    pager.setAttribute('aria-label', 'Post pages');
+    pager.appendChild(area);
+  }).catch(function () {});
+}
+
+
 //]]>
 </script>
 </head>
@@ -1353,7 +1459,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
       <b:if cond='data:mobile'>
         <div id='header-inner'>
           <div class='titlewrapper' style='background: transparent'>
-            <b:if cond='data:blog.url == data:blog.homepageUrl'>
+            <b:if cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;,&quot;error_page&quot;}'>
 
             <h1 class='title' style='background: transparent; border-width: 0px'>
 
@@ -1376,7 +1482,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
       <b:else/>
         <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
           <div class='titlewrapper' style='background: transparent'>
-            <b:if cond='data:blog.url == data:blog.homepageUrl'>
+            <b:if cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;,&quot;error_page&quot;}'>
 
             <h1 class='title' style='background: transparent; border-width: 0px'>
 
@@ -1399,6 +1505,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
       </b:if>
     <b:else/>
       <!--Show the image only-->
+<b:if cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;,&quot;error_page&quot;}'><h1 class='sr-only'><data:title/></h1></b:if>
       <div id='header-inner'>
         <a expr:href='data:blog.homepageUrl' style='display: block'>
           <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
@@ -1413,7 +1520,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
     <!--No header image -->
     <div id='header-inner'>
       <div class='titlewrapper'>
-        <b:if cond='data:blog.url == data:blog.homepageUrl'>
+        <b:if cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;,&quot;error_page&quot;}'>
 
         <h1 class='title'>
 
@@ -1719,7 +1826,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
     </b:if>
     <data:post.cmtfpIframe/>
     <script type='text/javascript'>
-      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath.jsEscaped/>&#39;);
     </script>
   </div>
 </b:includable>
@@ -1961,7 +2068,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
    <b:include name='mobile-nextprev'/>
 </b:includable>
        <b:includable id='mobile-nextprev'>
-  <div class='blog-pager' id='blog-pager'>
+  <div aria-label='Post pages' class='blog-pager' id='blog-pager' role='navigation'>
     <b:if cond='data:newerPageUrl'>
       <div class='mobile-link-button' id='blog-pager-newer-link'>
       <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
@@ -1986,6 +2093,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
   <div class='clear'/>
 </b:includable>
        <b:includable id='mobile-post' var='post'>
+<b:include data='post' name='colorlib-post-schema'/>
   <div class='date-outer'>
     <b:if cond='data:post.dateHeader'>
       <h2 class='date-header'><span><data:post.dateHeader/></span></h2>
@@ -2040,22 +2148,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
       </h1>
 </b:if>
                     </b:if>
-          <b:if cond='data:blog.pageType == &quot;item&quot;'>
-          <script type='application/ld+json'>
-          {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:post.url/>" },
-            "headline": "<data:post.title/>",
-            <b:if cond='data:post.firstImageUrl'>"image": "<data:post.firstImageUrl/>",</b:if>
-            "datePublished": "<data:post.timestampISO8601/>",
-            "dateModified": "<data:post.lastUpdatedISO8601/>",
-            "author": { "@type": "Person", "name": "<data:post.author/>" },
-            "publisher": { "@type": "Organization", "name": "<data:blog.title/>" },
-            "url": "<data:post.url/>"
-          }
-          </script>
-          </b:if>
+
 
 
           <div class='post-header'>
@@ -2121,7 +2214,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
   </div>
 </b:includable>
        <b:includable id='nextprev'>
-  <div class='blog-pager' id='blog-pager'>
+  <div aria-label='Post pages' class='blog-pager' id='blog-pager' role='navigation'>
     <b:if cond='data:newerPageUrl'>
       <span id='blog-pager-newer-link'>
       <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
@@ -2145,7 +2238,22 @@ loadCSS("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&
   </div>
   <div class='clear'/>
 </b:includable>
-       <b:includable id='post' var='post'>
+       <b:includable id='colorlib-post-schema' var='post'><b:if cond='data:blog.pageType == &quot;item&quot;'><script type='application/ld+json'>
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" },
+            "headline": "<data:post.title.jsonEscaped/>",
+            <b:if cond='data:post.firstImageUrl'>"image": "<data:post.firstImageUrl.jsonEscaped/>",</b:if>
+            "datePublished": "<data:post.timestampISO8601.jsonEscaped/>",
+            <b:if cond='data:post.lastUpdatedISO8601'>"dateModified": "<data:post.lastUpdatedISO8601.jsonEscaped/>",</b:if>
+            "author": { "@type": "Person", "name": "<data:post.author.jsonEscaped/>" },
+            "publisher": { "@type": "Organization", "name": "<data:blog.title.jsonEscaped/>" },
+            "url": "<data:post.url.canonical.jsonEscaped/>"
+          }
+          </script></b:if></b:includable>
+<b:includable id='post' var='post'>
+<b:include data='post' name='colorlib-post-schema'/>
 
 <b:if cond='data:blog.pageType in {&quot;index&quot;,&quot;archive&quot;}'>
 
@@ -2365,7 +2473,7 @@ a.postmarg .article-meta, .postmarg .article-meta a,.postmarg .article-meta i{co
 <style>.messager-text h1{padding:30px 0px;font-weight:600;font-size:36px;line-height:50px;}
 </style>
       <script>
-var msg = &#39;<data:navMessage/>&#39;;
+var msg = &#39;<data:navMessage.jsEscaped/>&#39;;
 //<![CDATA[
 (function () {
   var nav = document.querySelector(".mino-navigation");
@@ -2393,7 +2501,7 @@ var msg = &#39;<data:navMessage/>&#39;;
     </b:if>
     <data:post.cmtfpIframe/>
     <script type='text/javascript'>
-      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath.jsEscaped/>&#39;);
     </script>
   </div>
 </b:includable>
@@ -2742,7 +2850,7 @@ var msg = &#39;<data:navMessage/>&#39;;
               </div>
             </b:if>
             <div id='fb-root'/>
-            <script>var minoFbHref = &quot;<data:blog.canonicalUrl/>&quot;;</script>
+            <script>var minoFbHref = &quot;<data:blog.canonicalUrl.jsEscaped/>&quot;;</script>
             <script>
             //<![CDATA[
             (function () {
@@ -2786,14 +2894,24 @@ var msg = &#39;<data:navMessage/>&#39;;
        </b:widget-settings>
        <b:includable id='main'>
           <b:if cond='data:blog.pageType in {&quot;item&quot;,&quot;static_page&quot;}'>
-            &lt;script type=&#39;text/javascript&#39;&gt;
-            var disqus_shortname = &#39;<data:content/>&#39;;
-             (function() {
-              var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
-              dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
-              (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
-              })();
-            &lt;/script&gt;
+            <script>var colorlibDisqusShortname = &quot;<data:content.jsEscaped/>&quot;;</script>
+<script>
+//<![CDATA[
+(function(){
+  var holder=document.getElementById('disqus_thread');
+  var shortname=String(colorlibDisqusShortname||'').trim();
+  if(!holder||!shortname||!/^[a-z0-9][a-z0-9-]*$/i.test(shortname))return;
+  function load(){
+    if(document.getElementById('colorlib-disqus-sdk'))return;
+    var script=document.createElement('script');
+    script.id='colorlib-disqus-sdk';script.async=true;
+    script.src='https://'+shortname+'.disqus.com/embed.js';
+    document.head.appendChild(script);
+  }
+  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){if(entries.some(function(e){return e.isIntersecting;})){load();observer.disconnect();}},{rootMargin:'300px'});observer.observe(holder);}else{load();}
+})();
+//]]>
+</script>
           </b:if>
         </b:includable>
      </b:widget>
@@ -3361,7 +3479,7 @@ document.querySelectorAll("time.format-date").forEach(function (el) {
 //<![CDATA[
 
 // Plugin: SelectNav.js ~ url: https://github.com/lukaszfiszer/selectnav.js
-window.selectnav=function(){"use strict";var e=function(e,t){function c(e){var t;if(!e)e=window.event;if(e.target)t=e.target;else if(e.srcElement)t=e.srcElement;if(t.nodeType===3)t=t.parentNode;if(t.value)window.location.href=t.value}function h(e){var t=e.nodeName.toLowerCase();return t==="ul"||t==="ol"}function p(e){for(var t=1;document.getElementById("selectnav"+t);t++);return e?"selectnav"+t:"selectnav"+(t-1)}function d(e){a++;var t=e.children.length,n="",l="",c=a-1;if(!t){return}if(c){while(c--){l+=o}l+=" "}for(var v=0;v<t;v++){var m=e.children[v].children[0];if(typeof m!=="undefined"){var g=m.innerText||m.textContent;var y="";if(r){y=m.className.search(r)!==-1||m.parentNode.className.search(r)!==-1?f:""}if(i&&!y){y=m.href===document.URL?f:""}n+='<option value="'+m.href+'" '+y+">"+l+g+"</option>";if(s){var b=e.children[v].children[1];if(b&&h(b)){n+=d(b)}}}}if(a===1&&u){n='<option value="">'+u+"</option>"+n}if(a===1){n='<select class="selectnav" id="'+p(true)+'">'+n+"</select>"}a--;return n}e=document.getElementById(e);if(!e){return}if(!h(e)){return}if(!("insertAdjacentHTML"in window.document.documentElement)){return}document.documentElement.className+=" js";var n=t||{},r=n.activeclass||"active",i=typeof n.autoselect==="boolean"?n.autoselect:true,s=typeof n.nested==="boolean"?n.nested:true,o=n.indent||"-",u=n.label||"Menu",a=0,f=" selected ";e.insertAdjacentHTML("afterend",d(e));var l=document.getElementById(p());if(l.addEventListener){l.addEventListener("change",c)}if(l.attachEvent){l.attachEvent("onchange",c)}return l};return function(t,n){e(t,n)}}();
+window.selectnav=function(){"use strict";var e=function(e,t){function c(e){var t;if(!e)e=window.event;if(e.target)t=e.target;else if(e.srcElement)t=e.srcElement;if(t.nodeType===3)t=t.parentNode;if(t.value)window.location.href=t.value}function h(e){var t=e.nodeName.toLowerCase();return t==="ul"||t==="ol"}function p(e){for(var t=1;document.getElementById("selectnav"+t);t++);return e?"selectnav"+t:"selectnav"+(t-1)}function d(e){a++;var t=e.children.length,n="",l="",c=a-1;if(!t){return}if(c){while(c--){l+=o}l+=" "}for(var v=0;v<t;v++){var m=e.children[v].children[0];if(typeof m!=="undefined"){var g=m.innerText||m.textContent;var y="";if(r){y=m.className.search(r)!==-1||m.parentNode.className.search(r)!==-1?f:""}if(i&&!y){y=m.href===document.URL?f:""}n+='<option value="'+colorlibText(m.href)+'" '+y+">"+colorlibText(l+g)+"</option>";if(s){var b=e.children[v].children[1];if(b&&h(b)){n+=d(b)}}}}if(a===1&&u){n='<option value="">'+u+"</option>"+n}if(a===1){n='<select aria-label="Navigation" class="selectnav" id="'+p(true)+'">'+n+"</select>"}a--;return n}e=document.getElementById(e);if(!e){return}if(!h(e)){return}if(!("insertAdjacentHTML"in window.document.documentElement)){return}document.documentElement.className+=" js";var n=t||{},r=n.activeclass||"active",i=typeof n.autoselect==="boolean"?n.autoselect:true,s=typeof n.nested==="boolean"?n.nested:true,o=n.indent||"-",u=n.label||"Menu",a=0,f=" selected ";e.insertAdjacentHTML("afterend",d(e));var l=document.getElementById(p());if(l.addEventListener){l.addEventListener("change",c)}if(l.attachEvent){l.attachEvent("onchange",c)}return l};return function(t,n){e(t,n)}}();
 
 
 
@@ -3465,7 +3583,7 @@ function initMainMenu() {
 function minoMegaItemHtml(entry) {
   var thumb = entry.media$thumbnail ? minoResizeImage(entry.media$thumbnail.url, "s400") : MINO_NO_THUMB;
   var url = minoEntryUrl(entry);
-  return '<div class="mino-mega-item col-sm-3"><div class="mino-m-thumb" style="background:url(\'' + thumb + '\')"><a aria-label="' + minoAttr(entry.title.$t) + '" class="linkcover" href="' + url + '"></a></div><div class="mino-text"><a href="' + url + '">' + entry.title.$t + "</a></div></div>";
+  return '<div class="mino-mega-item col-sm-3"><div class="mino-m-thumb" style="background:url(\'' + thumb + '\')"><a aria-label="' + minoAttr(entry.title.$t) + '" class="linkcover" href="' + url + '"></a></div><div class="mino-text"><a href="' + url + '">' + colorlibText(entry.title.$t) + "</a></div></div>";
 }
 
 function minoMegaImageUrls(entries) {
@@ -3503,7 +3621,7 @@ function initMegaMenus() {
         item.classList.add("hasSubmenu");
       }
       (data.feed.link || []).forEach(function (l) {
-        if (l.rel === "alternate" && l.type === "text/html") link.setAttribute("href", l.href + "?&max-results=" + perPage);
+        if (l.rel === "alternate" && l.type === "text/html") link.setAttribute("href", colorlibLimitUrl(l.href, perPage));
       });
       if (!data.feed.entry) return;
       var total = parseInt(data.feed.openSearch$totalResults.$t, 10);
@@ -3643,8 +3761,8 @@ function initFeaturedGrid() {
           var author = entry.author[0].name.$t;
           var date = minoFormatShortDate(entry.published.$t);
           var image = minoEntryImage(entry, index === 0 ? "s1200" : "s600");
-          var labelHtml = '<div class="mino-label"><a class="icon ' + category + '" href="/search/label/' + category + '">' + category + "</a></div>";
-          var metaHtml = '<h3 class="minofeatured-title"><a href="' + url + '">' + title + '</a></h3><span class="mino-author">' + author + '</span><span class="mino-time">' + date + "</span>";
+          var labelHtml = '<div class="mino-label"><a class="icon ' + colorlibText(category) + '" href="/search/label/' + encodeURIComponent(category) + '">' + colorlibText(category) + "</a></div>";
+          var metaHtml = '<h3 class="minofeatured-title"><a href="' + url + '">' + colorlibText(title) + '</a></h3><span class="mino-author">' + colorlibText(author) + '</span><span class="mino-time">' + date + "</span>";
           if (index === 0) {
             // The hero is the homepage LCP element - start fetching it right away
             var hero = new Image();
@@ -3676,7 +3794,7 @@ var MINO_EMPTY_PANEL = '<style>.mino-empty-panel img{max-width: 600px; width:100
 function minoRecentItemHtml(entry) {
   var url = minoEntryUrl(entry);
   var image = minoEntryImage(entry, "s400");
-  return '<div class="mino-recent-item"><a aria-label="' + minoAttr(entry.title.$t) + '" class="mino-recent-thumb" href="' + url + '" style="background:url(' + image + ') no-repeat center center;background-size: cover"><span class="mino-trap"></span></a><div class="mino-recent-content"><h3 class="mino-recent-title"><a href="' + url + '">' + entry.title.$t + '</a></h3><span class="mino-author">' + entry.author[0].name.$t + '</span><span class="mino-time">' + minoFormatShortDate(entry.published.$t) + "</span></div></div>";
+  return '<div class="mino-recent-item"><a aria-label="' + minoAttr(entry.title.$t) + '" class="mino-recent-thumb" href="' + url + '" style="background:url(' + image + ') no-repeat center center;background-size: cover"><span class="mino-trap"></span></a><div class="mino-recent-content"><h3 class="mino-recent-title"><a href="' + url + '">' + colorlibText(entry.title.$t) + '</a></h3><span class="mino-author">' + colorlibText(entry.author[0].name.$t) + '</span><span class="mino-time">' + minoFormatShortDate(entry.published.$t) + "</span></div></div>";
 }
 
 function minoRenderRecentList(span, data, emptyMessage) {
@@ -3710,7 +3828,7 @@ function initSidebarFeedWidgets() {
           var avatar = entry.author[0].gd$image.src;
           if (avatar.indexOf("img1.blogblog.com/img/blank.gif") > -1 || avatar.indexOf("img2.blogblog.com/img/b16-rounded.gif") > -1) avatar = "https://img1.blogblog.com/img/anon36.png";
           if (avatar.indexOf("//") === 0) avatar = "https:" + avatar;
-          html += '<div class="mino-comment"><div class="mino-comment-profile"><img alt="" class="mino-comment-thumb" loading="lazy" src="' + avatar + '"/></div><a href="' + url + '">' + author + '</a><span>"' + text + '"</span></div>';
+          html += '<div class="mino-comment"><div class="mino-comment-profile"><img alt="" class="mino-comment-thumb" loading="lazy" src="' + avatar + '"/></div><a href="' + url + '">' + colorlibText(author) + '</a><span>"' + text + '"</span></div>';
         });
       } else {
         html += MINO_EMPTY_PANEL.replace("{message}", "No comments!");
@@ -3878,9 +3996,9 @@ article {
   /*]]>*/
 </script>
 <script type='text/javascript'>
- /*<![CDATA[*/
- function looppagecurrentg(e){var a="";pageNumber=parseInt(numPages/2),pageNumber==numPages-pageNumber&&(numPages=2*pageNumber+1),pageStart=currentPageNo-pageNumber,pageStart<1&&(pageStart=1),lastPageNo=parseInt(e/perPage)+1,lastPageNo-1==e/perPage&&(lastPageNo-=1),pageEnd=pageStart+numPages-1,pageEnd>lastPageNo&&(pageEnd=lastPageNo),a+="<span class='showpageOf'>Page "+currentPageNo+" of "+lastPageNo+"</span>";var t=parseInt(currentPageNo)-1;currentPageNo>1&&(a+="page"==currentPage?'<span class="showpage firstpage"><a href="'+home_page+'">'+firstText+"</a></span>":'<span class="displaypageNum firstpage"><a href="/search/label/'+postLabel+"?&max-results="+perPage+'">'+firstText+"</a></span>"),currentPageNo>2&&(a+=3==currentPageNo?"page"==currentPage?'<span class="showpage"><a href="'+home_page+'">'+prevText+"</a></span>":'<span class="displaypageNum"><a href="/search/label/'+postLabel+"?&max-results="+perPage+'">'+prevText+"</a></span>":"page"==currentPage?'<span class="displaypageNum"><a href="#" onclick="redirectpage('+t+');return false">'+prevText+"</a></span>":'<span class="displaypageNum"><a href="#" onclick="redirectlabel('+t+');return false">'+prevText+"</a></span>"),pageStart>1&&(a+="page"==currentPage?'<span class="displaypageNum"><a href="'+home_page+'">1</a></span>':'<span class="displaypageNum"><a href="/search/label/'+postLabel+"?&max-results="+perPage+'">1</a></span>'),pageStart>2&&(a+=" ... ");for(var s=pageStart;s<=pageEnd;s++)a+=currentPageNo==s?'<span class="pagecurrent">'+s+"</span>":1==s?"page"==currentPage?'<span class="displaypageNum"><a href="'+home_page+'">1</a></span>':'<span class="displaypageNum"><a href="/search/label/'+postLabel+"?&max-results="+perPage+'">1</a></span>':"page"==currentPage?'<span class="displaypageNum"><a href="#" onclick="redirectpage('+s+');return false">'+s+"</a></span>":'<span class="displaypageNum"><a href="#" onclick="redirectlabel('+s+');return false">'+s+"</a></span>";pageEnd<lastPageNo-1&&(a+="..."),pageEnd<lastPageNo&&(a+="page"==currentPage?'<span class="displaypageNum"><a href="#" onclick="redirectpage('+lastPageNo+');return false">'+lastPageNo+"</a></span>":'<span class="displaypageNum"><a href="#" onclick="redirectlabel('+lastPageNo+');return false">'+lastPageNo+"</a></span>");var r=parseInt(currentPageNo)+1;currentPageNo<lastPageNo-1&&(a+="page"==currentPage?'<span class="displaypageNum"><a href="#" onclick="redirectpage('+r+');return false">'+nextText+"</a></span>":'<span class="displaypageNum"><a href="#" onclick="redirectlabel('+r+');return false">'+nextText+"</a></span>"),currentPageNo<lastPageNo&&(a+="page"==currentPage?'<span class="displaypageNum lastpage"><a href="#" onclick="redirectpage('+lastPageNo+');return false">'+lastText+"</a></span>":'<span class="displaypageNum lastpage"><a href="#" onclick="redirectlabel('+lastPageNo+');return false">'+lastText+"</a></span>");for(var p=document.getElementsByName("pageArea"),n=document.getElementById("blog-pager"),l=0;l<p.length;l++)p[l].innerHTML=a;p&&p.length>0&&(a=""),n&&(n.innerHTML=a)}function totalcountdata(e){var a=e.feed;looppagecurrentg(parseInt(a.openSearch$totalResults.$t,10))}function pagecurrentg(){var e=urlactivepage;-1!=e.indexOf("/search/label/")&&(postLabel=-1!=e.indexOf("?updated-max")?e.substring(e.indexOf("/search/label/")+14,e.indexOf("?updated-max")):e.substring(e.indexOf("/search/label/")+14,e.indexOf("?&max"))),-1==e.indexOf("?q=")&&-1==e.indexOf(".html")&&(-1==e.indexOf("/search/label/")?(currentPage="page",currentPageNo=-1!=urlactivepage.indexOf("#PageNo=")?urlactivepage.substring(urlactivepage.indexOf("#PageNo=")+8,urlactivepage.length):1,document.write('<script src="'+home_page+'feeds/posts/summary?max-results=1&alt=json-in-script&callback=totalcountdata"><\/script>')):(currentPage="label",-1==e.indexOf("&max-results=")&&(perPage=20),currentPageNo=-1!=urlactivepage.indexOf("#PageNo=")?urlactivepage.substring(urlactivepage.indexOf("#PageNo=")+8,urlactivepage.length):1,document.write('<script src="'+home_page+"feeds/posts/summary/-/"+postLabel+'?alt=json-in-script&callback=totalcountdata&max-results=1" ><\/script>')))}function redirectpage(e){jsonstart=(e-1)*perPage,noPage=e;var a=document.getElementsByTagName("head")[0],t=document.createElement("script");t.type="text/javascript",t.setAttribute("src",home_page+"feeds/posts/summary?start-index="+jsonstart+"&max-results=1&alt=json-in-script&callback=finddatepost"),a.appendChild(t)}function redirectlabel(e){jsonstart=(e-1)*perPage,noPage=e;var a=document.getElementsByTagName("head")[0],t=document.createElement("script");t.type="text/javascript",t.setAttribute("src",home_page+"feeds/posts/summary/-/"+postLabel+"?start-index="+jsonstart+"&max-results=1&alt=json-in-script&callback=finddatepost"),a.appendChild(t)}function finddatepost(e){post=e.feed.entry[0];var a=post.published.$t.substring(0,19)+post.published.$t.substring(23,29),t=encodeURIComponent(a);if("page"==currentPage)s="/search?updated-max="+t+"&max-results="+perPage+"#PageNo="+noPage;else var s="/search/label/"+postLabel+"?updated-max="+t+"&max-results="+perPage+"#PageNo="+noPage;location.href=s}"undefined"==typeof firstText&&(firstText="First"),"undefined"==typeof lastText&&(lastText="Last");var noPage,currentPage,currentPageNo,postLabel;pagecurrentg();
-      /*]]>*/
+//<![CDATA[
+colorlibNumberedPager({pager:'#blog-pager',older:'a.blog-pager-older-link',posts:'#Blog1 .blog-posts > .grid-item',size:typeof perPage==='undefined'?7:perPage});
+//]]>
 </script>
 </b:if>
 </b:if>
@@ -3940,9 +4058,9 @@ function minoRenderListWidget(widget, data) {
       var image = minoEntryImage(entry, index === 0 ? "s800" : "s400");
       var metaTime = '<span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span>";
       if (index === 0) {
-        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + title + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
+        html += '<div class="mino-widget-col-1 mino-list-col"><article class="mino-post"><div class="mino-parentover"><div class="mino-list-media"><a href="' + url + '"><img alt="' + colorlibText(title) + '" loading="lazy" src="' + image + '"></a>' + minoShareIconsHtml(url) + '</div><div class="mino-box-list"><div class="mino-box-inside"><div class="mino-list-content"><div class="entry-header"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + colorlibText(title) + '</a></h3></div></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + colorlibText(author) + '</a></span></span> ' + metaTime + '</div><div class="entry-content"><div>' + minoExcerpt(entry.content ? entry.content.$t : "", 25) + '...</div><a class="btn-read" href="' + url + '">Read More</a></div></div></div></div></article></div><div class="mino-widget-col-2 mino-list-col">';
       } else {
-        html += '<article class="mino-post"><div class="article-image"><div class="post-image"><a aria-label="' + minoAttr(title) + '" href="' + url + '" style="background:black url(' + image + ')" rel="bookmark"></a></div></div><div class="article-content side-item-text"><div class="entry-header"><div class="entry-header-title"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + title + '</a></h3></div></div><div class="article-meta">' + metaTime + "</div></div></article>";
+        html += '<article class="mino-post"><div class="article-image"><div class="post-image"><a aria-label="' + minoAttr(title) + '" href="' + url + '" style="background:black url(' + image + ')" rel="bookmark"></a></div></div><div class="article-content side-item-text"><div class="entry-header"><div class="entry-header-title"><h3 class="entry-title"><a href="' + url + '" rel="bookmark">' + colorlibText(title) + '</a></h3></div></div><div class="article-meta">' + metaTime + "</div></div></article>";
       }
     });
     html += '</div><div class="clearfix"></div></div>';
@@ -3978,9 +4096,9 @@ function minoRenderGalleryWidget(widget, data) {
     var date = minoFormatLongDate(published);
     var media = minoGalleryImage(entry);
     if (index === 0) {
-      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + title + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + author + '</a></span></span> <span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
+      featureHtml = '<div class="mino-gallery-feature"><div class="mino-iframe-hidden"></div><div class="feature-image  ' + media.id + '" data-vidid="' + media.id + '" style="background:url(' + media.img + ')"></div><div class="mino-absolutize"><div class="mino-dyn-t"><h3><a href="' + url + '">' + colorlibText(title) + '</a></h3></div><div class="article-meta"><span class="byline"><i class="fa-regular fa-user"></i><span class="author vcard"><a class="url fn n" href="' + authorUrl + '">' + colorlibText(author) + '</a></span></span> <span class="posted-on"><i class="fa-regular fa-clock"></i><a href="' + url + '" rel="bookmark"><time class="entry-date published updated" datetime="' + published + '">' + date + "</time></a></span></div></div></div>";
     }
-    slidesHtml += '<div class="swiper-slide mino-gallery-post slide item dy-dn"><div class="' + state + " " + media.id + ' img_dyn getinfo" data-vidid="' + media.id + '" data-img="' + media.img + '" style="background:url(' + media.img + ')" data-auth="' + author + '" data-auth-uri="' + authorUrl + '" data-time="' + date + '"></div><div class="mino-slide-title"><h3><a href="' + url + '">' + title + "</a></h3></div></div>";
+    slidesHtml += '<div class="swiper-slide mino-gallery-post slide item dy-dn"><div class="' + state + " " + media.id + ' img_dyn getinfo" data-vidid="' + media.id + '" data-img="' + media.img + '" style="background:url(' + media.img + ')" data-auth="' + colorlibText(author) + '" data-auth-uri="' + authorUrl + '" data-time="' + date + '"></div><div class="mino-slide-title"><h3><a href="' + url + '">' + colorlibText(title) + "</a></h3></div></div>";
     if (index === 0) state = "playing";
   });
   widget.insertAdjacentHTML("beforeend",
@@ -4050,7 +4168,7 @@ function initCustomWidgets() {
         if (l.rel === "alternate") {
           var widgetBox = widget.closest(".widget");
           var heading = widgetBox ? widgetBox.querySelector("h2.title") : null;
-          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + l.href + "?&max-results=" + perPage + '" >view all <i class="fa-solid fa-arrow-right"></i></a></div>');
+          if (heading) heading.insertAdjacentHTML("afterend", '<div class="mino-right-all"><a href="' + colorlibLimitUrl(l.href, perPage) + '" >view all <i class="fa-solid fa-arrow-right"></i></a></div>');
         }
       });
       if (type === "list") minoRenderListWidget(widget, data);
@@ -4078,7 +4196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Label links honor the configured posts-per-page
 document.querySelectorAll(".Label a, .mino-max-limit").forEach(function (a) {
   var href = a.getAttribute("href");
-  if (href && href.indexOf("max-results=") === -1) a.setAttribute("href", href + "?&max-results=" + perPage);
+  if (href && href.indexOf("max-results=") === -1) a.setAttribute("href", colorlibLimitUrl(href, perPage));
 });
 //]]>
 </script>
